@@ -15,8 +15,9 @@ If you are using Blend Micro board, please comment out:
 * line 726-728 in global.js
 
 ## Deploying the app on an android phone locally using Terminal
-
-* If you have freshly cloned the project from github, remember to use `npm install -g cordova` to download the latest cordova version before running the app. Go to https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html to download the various dependencies in order to set up your SDK environment to deploy Cordova apps for Android devices. 
+* Clone the project from github. 
+* Go to https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html to download the various dependencies in order to set up your SDK environment to deploy Cordova apps for Android devices. 
+* you might also want to download
 * Open a new terminal window.
 * Redirect to the source code directory
 * Check whether any dependencies are missing

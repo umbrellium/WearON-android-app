@@ -3,9 +3,8 @@
 
 ## About WearON mobile phone app 
 
-The app was developed with the latest up to date cordova version 6.3.1. It supports both android and iOS version: 
+The app was developed with the latest up to date cordova version 6.3.1. It supports android version: 
 * Android version >6.0.1 
-* iOS >9.1
 
 ## Note
 

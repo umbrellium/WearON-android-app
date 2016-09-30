@@ -18,7 +18,6 @@ If you are using Blend Micro board, please comment out:
 * Clone the project from github. 
 * Go to https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html to download the various dependencies in order to set up your SDK environment to deploy Cordova apps for Android devices. 
 * Alternatively, you can also check out our [Wiki](https://github.com/umbrellium/WearON-android-app/wiki) for instructions on installing the various dependencies using our method
-* you might also want to download
 * Open a new terminal window.
 * Redirect to the source code directory
 * Check whether any dependencies are missing

@@ -16,11 +16,10 @@ If you are using Blend Micro board, please comment out:
 
 ## Deploying the app on an android phone locally using Terminal
 * Clone the project from github. 
-* Go to https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html to download the various dependencies in order to set up your SDK environment to deploy Cordova apps for Android devices. 
+* Go to https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html to download the various dependencies in ogrder to set up your SDK environment to deploy Cordova apps for Android devices. 
 * Alternatively, you can also check out our [Wiki](https://github.com/umbrellium/WearON-android-app/wiki) for instructions on installing the various dependencies using our method
 * Open a new terminal window.
-* Redirect to the source code directory
-* Check whether any dependencies are missing
+* Redirect to the source code directory, run the following command to check whether any dependencies are missing
 ```bash
 $ cordova build android
 ```

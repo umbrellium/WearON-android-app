@@ -6,7 +6,10 @@ function getTokenData() {
     var x = "https://pure-taiga-5893.herokuapp.com/tokens/" + key + "/token_key";
     $.get(x,
         function(data, status) {
-            token_info = data;
+            var body = data.replace(/^[\S\s]*<body[^>]*?>/i, "")
+                .replace(/<\/body[\S\s]*$/i, ""); //get body of content
+
+            token_info = body;
             readTokenData();
         });
 
@@ -18,10 +21,15 @@ function getTokenData() {
 function readTokenData() {
 
     // split the html content of url to readable chunk
-    var dataChunk = token_info.split(" ");
-
-    // split the actual content of the tokenstring
-    var tokenContent = dataChunk[28].split("&quot;");
+    var tokenContent = token_info.split("&quot;");
+    console.log(tokenContent);
+    console.log(tokenContent[3]);
+    console.log(tokenContent[7]);
+    console.log(tokenContent[11]);
+    console.log(tokenContent[15]);
+    console.log(tokenContent[19]);
+    console.log(tokenContent[23]);
+    console.log(tokenContent[27]);
 
     //dissect tokenstring into the neccessary info
     if (tokenContent[3] != "") { // check is user inputing any key in this catagory

@@ -4,7 +4,11 @@ function getKeyData_connectivity_1() {
     var x = "https://pure-taiga-5893.herokuapp.com/connectivity_tokens/" + key + "/connect_key";
     $.get(x,
         function(data, status) {
-            connect_key_info_1 = data;
+            var body = data.replace(/^[\S\s]*<body[^>]*?>/i, "")
+                .replace(/<\/body[\S\s]*$/i, ""); //get body of content
+            console.log(body);
+
+            connect_key_info_1 = body;
             readConnectKeyData_1();
         });
 
@@ -15,10 +19,11 @@ function getKeyData_connectivity_1() {
 function readConnectKeyData_1() {
 
     // split the html content of url to readable chunk
-    var dataChunk_connectivity_1 = connect_key_info_1.split(" ");
+    var keyContent_1 = connect_key_info_1.split("&quot;");
+    console.log(keyContent_1[3]);
 
-    // split the actual content of the tokenstring
-    var keyContent_1 = dataChunk_connectivity_1[28].split("&quot;");
+    // // split the actual content of the tokenstring
+    // var keyContent_1 = dataChunk_connectivity_1[28].split("&quot;");
 
     //dissect connect_key string into the neccessary info
     if (keyContent_1[3] != "") { // check is user inputing any key in this catagory

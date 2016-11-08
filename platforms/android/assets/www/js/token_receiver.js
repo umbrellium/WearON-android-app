@@ -22,14 +22,6 @@ function readTokenData() {
 
     // split the html content of url to readable chunk
     var tokenContent = token_info.split("&quot;");
-    console.log(tokenContent);
-    console.log(tokenContent[3]);
-    console.log(tokenContent[7]);
-    console.log(tokenContent[11]);
-    console.log(tokenContent[15]);
-    console.log(tokenContent[19]);
-    console.log(tokenContent[23]);
-    console.log(tokenContent[27]);
 
     //dissect tokenstring into the neccessary info
     if (tokenContent[3] != "") { // check is user inputing any key in this catagory
@@ -101,7 +93,6 @@ function readTokenData() {
 
     // have a confirm and restart button for user to verify data, and move on to next step if correct
     $("#confirmationPage").show();
-
 
 };
 

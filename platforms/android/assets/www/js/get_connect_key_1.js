@@ -1,7 +1,7 @@
 function getKeyData_connectivity_1() {
 
     var key = document.getElementById("key3").value + "-" + document.getElementById("key4").value;
-    var x = "https://pure-taiga-5893.herokuapp.com/connectivity_tokens/" + key + "/connect_key";
+    var x = "http://www.wearon.io/connectivity_tokens/" + key + "/connect_key";
     $.get(x,
         function(data, status) {
             var body = data.replace(/^[\S\s]*<body[^>]*?>/i, "")

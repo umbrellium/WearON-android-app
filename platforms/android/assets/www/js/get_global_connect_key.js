@@ -1,7 +1,7 @@
 function getKeyData_global_connectivity() {
 
     var key = document.getElementById("key5").value + "-" + document.getElementById("key6").value;
-    var x = "https://pure-taiga-5893.herokuapp.com/global_connectivity_tokens/" + key + "/global_connect_key";
+    var x = "http://www.wearon.io/global_connectivity_tokens/" + key + "/global_connect_key";
     $.get(x,
         function(data, status) {
             var body = data.replace(/^[\S\s]*<body[^>]*?>/i, "")
@@ -20,9 +20,6 @@ function readGlobalConnectKeyData() {
 
     // split the html content of url to readable chunk
     var global_keyContent = global_connect_key_info.split("&quot;");
-
-    // split the actual content of the tokenstring
-    // var global_keyContent = dataChunk_global_connectivity[28].split("&quot;");
 
     //dissect connect_key string into the neccessary info
     if (global_keyContent[3] != "") { // check is user inputing any key in this catagory

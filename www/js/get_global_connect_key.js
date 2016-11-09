@@ -1,7 +1,7 @@
 function getKeyData_global_connectivity() {
 
     var key = document.getElementById("key5").value + "-" + document.getElementById("key6").value;
-    var x = "https://pure-taiga-5893.herokuapp.com/global_connectivity_tokens/" + key + "/global_connect_key";
+    var x = "http://www.wearon.io/global_connectivity_tokens/" + key + "/global_connect_key";
     $.get(x,
         function(data, status) {
             var body = data.replace(/^[\S\s]*<body[^>]*?>/i, "")

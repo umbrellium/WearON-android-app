@@ -3,7 +3,7 @@ function getTokenData() {
 
     $(".useStoredToken").hide();
     var key = document.getElementById("key").value + "-" + document.getElementById("key2").value;
-    var x = "https://pure-taiga-5893.herokuapp.com/tokens/" + key + "/token_key";
+    var x = "http://www.wearon.io/tokens/" + key + "/token_key";
     $.get(x,
         function(data, status) {
             var body = data.replace(/^[\S\s]*<body[^>]*?>/i, "")

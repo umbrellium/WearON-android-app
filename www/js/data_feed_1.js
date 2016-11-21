@@ -47,8 +47,10 @@ function toggelgetDataFeed1() {
 		$("#channelID_1").hide();
 		$("#channel_field_1_1").hide();
 		$("#channel_field_2_1").hide();
-		$("#key3").val("");
-		$("#key4").val("");
+    $("#key3").val("");//data_feed_1
+    $("#key4").val("");//data_feed_1
+    $("#key7").val("");//data_feed_2
+    $("#key8").val("");//data_feed_2
 
 		//if there is stored key info, show it on panel
 		if (localStorage.lastSavedConnectKey_1 != "-") {

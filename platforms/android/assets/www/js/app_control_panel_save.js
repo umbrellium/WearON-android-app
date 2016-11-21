@@ -1,6 +1,12 @@
 //save the state of the control panel in local storage of phone
 function saveState() {
 	//check state of various analog, digital, geo inputs and outputs
+	localStorage.saveState_analog_enabled_A2 = analog_enabled_A2;
+	localStorage.saveState_connect_to_A2 = connect_to_A2;
+
+	localStorage.saveState_analog_enabled_A3 = analog_enabled_A3;
+	localStorage.saveState_connect_to_A3 = connect_to_A3;
+
 	localStorage.saveState_analog_enabled_A4 = analog_enabled_A4;
 	localStorage.saveState_connect_to_A4 = connect_to_A4;
 
@@ -31,6 +37,48 @@ function saveState() {
 
 //use the last saved state of the control panel
 function useState() {
+
+	//verify last state of A2 controls, put it back to last saved state
+	if (localStorage.saveState_analog_enabled_A2 == "true") { // if save state is true but the current setting is false
+		if (analog_enabled_A2 == false) {
+			app.toggelAnalogA2(); // turn it to true
+		}
+	} else {
+		if (analog_enabled_A2 == true) { // if save state is false but current setting is true
+			app.toggelAnalogA2(); // turn it back to false
+		}
+	};
+
+	if (localStorage.saveState_connect_to_A2 == "true") { // if save state is true but the current setting is false
+		if (connect_to_A2 == false) {
+			toggelConnectA2(); // turn it to true
+		}
+	} else {
+		if (connect_to_A2 == true) { // if save state is false but current setting is true
+			toggelConnectA2(); // turn it back to false
+		}
+	};
+
+	//verify last state of A3 controls, put it back to last saved state
+	if (localStorage.saveState_analog_enabled_A3 == "true") { // if save state is true but the current setting is false
+		if (analog_enabled_A3 == false) {
+			app.toggelAnalogA3(); // turn it to true
+		}
+	} else {
+		if (analog_enabled_A3 == true) { // if save state is false but current setting is true
+			app.toggelAnalogA3(); // turn it back to false
+		}
+	};
+
+	if (localStorage.saveState_connect_to_A3 == "true") { // if save state is true but the current setting is false
+		if (connect_to_A3 == false) {
+			toggelConnectA3(); // turn it to true
+		}
+	} else {
+		if (connect_to_A3 == true) { // if save state is false but current setting is true
+			toggelConnectA3(); // turn it back to false
+		}
+	};
 
 	//verify last state of A4 controls, put it back to last saved state
 	if (localStorage.saveState_analog_enabled_A4 == "true") { // if save state is true but the current setting is false
@@ -296,6 +344,8 @@ function useState() {
 		checkLogicD10_number();
 		checkLogicD9_number();
 		checkLogic_data_feed_1_number();
+		checkLogic_data_feed_2_number();
+		checkLogic_data_feed_3_number();
 
 	}
 

@@ -193,6 +193,8 @@ app.connectTo = function(address) {
 					if (lockScreenStatus == false) {
 						//reset the store value of analog_enabled_A4, analog_enabled_A4, geolocation_enabled 
 						//so that app can keep track of status of them is app quit during end user mode
+						localStorage.analog_enabled_A2 = false;
+						localStorage.analog_enabled_A3 = false;
 						localStorage.analog_enabled_A4 = false;
 						localStorage.analog_enabled_A5 = false;
 						localStorage.geolocation_enabled = false;
@@ -234,6 +236,8 @@ app.connectTo = function(address) {
 							$('.connectA4').hide();
 							$('#connectA4status').hide();
 							$('#connect_data_set_1').hide();
+							$('#connect_data_set_2').hide();
+							$('#connect_data_set_3').hide();
 						}
 
 						//clear local notification if device is connected back
@@ -358,6 +362,10 @@ app.disconnect = function(errorMessage) {
 		$("#connect_D10_panel").hide();
 		$("#connect_data_feed_1_panel").hide();
 		$("#get_data_set_1_panel").hide();
+		$("#connect_data_feed_2_panel").hide();
+		$("#get_data_set_2_panel").hide();
+		$("#connect_data_feed_3_panel").hide();
+		$("#get_data_set_3_panel").hide();
 		$('#scanStatus').empty();
 		$('#scanResultView').hide();
 		$('#scanResultView').empty();
@@ -384,6 +392,16 @@ app.disconnect = function(errorMessage) {
 			app.toggelAnalogA4();
 			$('.connectA4').css("background-color", "white");
 			$('.connectA4').css("color", "black");
+		};
+		if (analog_enabled_A3 == true) {
+			app.toggelAnalogA3();
+			$('.connectA3').css("background-color", "white");
+			$('.connectA3').css("color", "black");
+		};
+		if (analog_enabled_A2 == true) {
+			app.toggelAnalogA2();
+			$('.connectA2').css("background-color", "white");
+			$('.connectA2').css("color", "black");
 		};
 		if (geolocation_enabled == true) {
 			app.toggleGeoTrack();
@@ -440,8 +458,48 @@ app.disconnect = function(errorMessage) {
 			$('#numbering_data_feed_1').val("");
 		}
 
+		if (logic_constructed_data_feed_2 == true) {
+			logic_constructed_data_feed_2 = false;
+			$('#connect_data_set_2').css("background-color", "white");
+			$('#connect_data_set_2').css("color", "black");
+			$('#connect_data_set_2').text('Set Logic');
+			greater_than_DataFeed2 = 1;
+			D10_on_DataFeed2 = false;
+			on_DataFeed2 = false;
+			check_number_DataFeed2 = false;
+			numDataFeed2 = "";
+			$('#numbering_data_feed_2').val("");
+			checkLogic_data_feed_2_number();
+		} else {
+			$('#numbering_data_feed_2').val("");
+		}
+
+		if (logic_constructed_data_feed_3 == true) {
+			logic_constructed_data_feed_3 = false;
+			$('#connect_data_set_3').css("background-color", "white");
+			$('#connect_data_set_3').css("color", "black");
+			$('#connect_data_set_3').text('Set Logic');
+			greater_than_DataFeed3 = 1;
+			D10_on_DataFeed3 = false;
+			on_DataFeed3 = false;
+			check_number_DataFeed3 = false;
+			numDataFeed3 = "";
+			$('#numbering_data_feed_3').val("");
+			checkLogic_data_feed_3_number();
+		} else {
+			$('#numbering_data_feed_3').val("");
+		}
+
 		if (get_data_feed_1 == true) {
 			toggelgetDataFeed1();
+		}
+
+		if (get_data_feed_2 == true) {
+			toggelgetDataFeed2();
+		}
+
+		if (get_data_feed_3 == true) {
+			toggelgetDataFeed3();
 		}
 
 		if (get_data_1_success == true) {
@@ -452,15 +510,41 @@ app.disconnect = function(errorMessage) {
 			$('#DataFeed1').hide();
 		}
 
+		if (get_data_2_success == true) {
+			get_data_2_success = false;
+			toggelgetDataFeed2();
+			$('#get_data_set_2_panel').hide();
+			//hide the data feed content on main content screen
+			$('#DataFeed2').hide();
+		}
+
+		if (get_data_3_success == true) {
+			get_data_3_success = false;
+			toggelgetDataFeed3();
+			$('#get_data_set_3_panel').hide();
+			//hide the data feed content on main content screen
+			$('#DataFeed3').hide();
+		}
+
 		if (show_panel_data_feed_1 == true) {
 			toggelConnect_data_feed_1();
 		}
 
+		if (show_panel_data_feed_2 == true) {
+			toggelConnect_data_feed_2();
+		}
+
+		if (show_panel_data_feed_3 == true) {
+			toggelConnect_data_feed_3();
+		}
+
 		clearInterval(getDataFeed1_Thingspeak);
+		clearInterval(getDataFeed2_Thingspeak);
+		clearInterval(getDataFeed3_Thingspeak);
+
 		//END cross connectivity panel //////
 
 		// for global connectivity panel /////
-
 		if (logic_constructed_thingful_data_feed == true) {
 			logic_constructed_thingful_data_feed = false;
 			$('#connect_thingful').css("background-color", "white");
@@ -496,10 +580,13 @@ app.disconnect = function(errorMessage) {
 		clearInterval(getDataFeed_Thingful);
 
 		//END global connectivity panel //////
-
+		A2count = 0;
+		A3count = 0;
 		A4count = 0;
 		A5count = 0;
 		geoCount = 0;
+		document.getElementById("connectA2status").innerHTML = "Number of readings sent to Thingspeak: - ";
+		document.getElementById("connectA3status").innerHTML = "Number of readings sent to Thingspeak: - ";
 		document.getElementById("connectA4status").innerHTML = "Number of readings sent to Thingspeak: - ";
 		document.getElementById("connectA5status").innerHTML = "Number of readings sent to Thingspeak: - ";
 		document.getElementById("geoStatus").innerHTML = "Number of readings sent to Thingspeak: - ";

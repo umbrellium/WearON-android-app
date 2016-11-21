@@ -1,7 +1,7 @@
 window.addEventListener("load", function load(event) {
   window.removeEventListener("load", load, false); //remove listener, no longer needed
   startApplication();
-  console.log("yay");
+  console.log("load event.js");
 }, false);
 
 function startApplication() {
@@ -31,6 +31,8 @@ function startApplication() {
     $("#confirmationPage").hide();
     $("#anotherToken").hide();
     $("#AppContent").hide();
+    $('#connectA2error').hide();
+    $('#connectA3error').hide();
     $('#connectA4error').hide();
     $('#connectA5error').hide();
     $("#AppControl").hide();
@@ -47,8 +49,12 @@ function startApplication() {
     $("#connect_D9_panel").hide();
     $("#connect_D10_panel").hide();
     $("#connect_data_feed_1_panel").hide();
+    $("#connect_data_feed_2_panel").hide();
+    $("#connect_data_feed_3_panel").hide();
     $("#connect_thingful_data_panel").hide();
     $("#get_data_set_1_panel").hide();
+    $("#get_data_set_2_panel").hide();
+    $("#get_data_set_3_panel").hide();
     $("#get_thingful_data_panel").hide();
   }
 
@@ -78,6 +84,8 @@ function openMainPage() {
   $("#anotherToken").hide();
 
   $("#AppContent").hide();
+  $('#connectA2error').hide();
+  $('#connectA3error').hide();
   $('#connectA4error').hide();
   $('#connectA5error').hide();
 
@@ -98,11 +106,17 @@ function openMainPage() {
   $("#connect_D9_panel").hide();
   $("#connect_D10_panel").hide();
   $("#connect_data_feed_1_panel").hide();
+  $("#connect_data_feed_2_panel").hide();
+  $("#connect_data_feed_3_panel").hide();
   $("#connect_thingful_data_panel").hide();
   $("#get_data_set_1_panel").hide();
+  $("#get_data_set_2_panel").hide();
+  $("#get_data_set_3_panel").hide();
   $("#get_thingful_data_panel").hide();
   $('#confirm_connection_D9').hide();
   $('#connect_data_set_1').hide();
+  $('#connect_data_set_2').hide();
+  $('#connect_data_set_3').hide();
   $('#connect_thingful').hide();
 }
 

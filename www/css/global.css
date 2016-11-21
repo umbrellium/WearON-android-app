@@ -135,8 +135,8 @@
     vertical-align: bottom
 }
 
-#connectA5status, #connectA4status, #geoStatus, #storedData, #panel_title, #footnote, #note,#DataFeed1_content_status, 
-#ThingfulFeed_content_status {
+#connectA2status, #connectA3status, #connectA5status, #connectA4status, #geoStatus, #storedData, #panel_title, #footnote, #note,
+#DataFeed1_content_status, #DataFeed2_content_status, #DataFeed3_content_status,#ThingfulFeed_content_status {
 	font-size: 12px;
 	opacity:0.5;
 }
@@ -147,16 +147,17 @@
 	color:red;	
 }
 
-#A4Bar, #A5Bar, #GEOreading, #DataFeed1, #ThingfulFeed{
+#A2Bar, #A3Bar, #A4Bar, #A5Bar, #GEOreading, #DataFeed1, #DataFeed2, #DataFeed3, #ThingfulFeed{
   font-size: 30px;
   margin:5vw;
 }
 
-#connectA5status, #connectA4status, #geoStatus,#DataFeed1_content_status, #ThingfulFeed_content_status{
+#connectA5status, #connectA4status, #connectA3status,#connectA2status, #geoStatus,
+#DataFeed1_content_status,#DataFeed2_content_status, #DataFeed3_content_status,#ThingfulFeed_content_status{
 	margin-top: 5px;
 }
 
-#connectA4error, #connectA5error{
+#connectA2error,#connectA3error,#connectA4error, #connectA5error{
 	font-size: 12px;
 	opacity:0.5;
 	color: red;
@@ -171,7 +172,7 @@
 	opacity:0.5;
 }
 
-#valueA5, #valueA4, #geolocationValue{
+#valueA2,#valueA3, #valueA5, #valueA4, #geolocationValue{
 	margin-top: 10px;
 	margin-bottom: 10px;
 
@@ -181,10 +182,16 @@
 	font-size: 10px;
 }
 
-.enableA5, .connectA5, .enableA4, .connectA4, .enableGeoTrack, 
+.enableA2, .connectA2,.enableA3, .connectA3, .enableA5, .connectA5, .enableA4, .connectA4, .enableGeoTrack, 
 .connectGeo, .enableD9, .connectD9, .enableD10, .connectD10 ,
-#saveState, #useState,  #get_data_set_1, #connect_data_set_1, 
-#saveState_data_feed_1, #useState_data_feed_1, #get_thingful, #connect_thingful,
+#saveState, #useState,  
+#get_data_set_1, #connect_data_set_1, 
+#get_data_set_2, #connect_data_set_2,
+#get_data_set_3, #connect_data_set_3,
+#saveState_data_feed_3, #useState_data_feed_3,
+#saveState_data_feed_2, #useState_data_feed_2,
+#saveState_data_feed_1, #useState_data_feed_1, 
+#get_thingful, #connect_thingful,
 #saveState_thingful, #useState_thingful{
 	font-size: 15px;
 	background-color: white;
@@ -195,13 +202,16 @@
 	margin:4px;
 }
 
-.enableA4, .enableA5, .enableD9, .connectD9, .enableD10, .connectD10 ,  #get_data_set_1, #connect_data_set_1,
+.enableA2,.enableA3, .enableA4, .enableA5, .enableD9, .connectD9, .enableD10, .connectD10 , 
+#get_data_set_1, #connect_data_set_1,
+#get_data_set_2, #connect_data_set_2,
+#get_data_set_3, #connect_data_set_3,
 #get_thingful, #connect_thingful {
 	padding-left: 18px;
 	padding-right: 18px;
 }
 
-#saveState, #saveState_data_feed_1, #saveState_thingful {
+#saveState, #saveState_data_feed_1, #saveState_data_feed_2, #saveState_data_feed_3, #saveState_thingful {
 	padding-left: 30px;
 	padding-right: 30px;
 }
@@ -232,8 +242,9 @@
 }
 
 
-#A4ControlPanel, #A5ControlPanel, #GEOControlPanel, #SaveControlPanel, #D9ControlPanel, #D10ControlPanel
-, #DateFeed1Panel, #SaveControlPanel_data_feed_1, #thingfulPanel, #SaveControlPanel_thingful {
+#A2ControlPanel,#A3ControlPanel,#A4ControlPanel, #A5ControlPanel, #GEOControlPanel, #SaveControlPanel, #D9ControlPanel, #D10ControlPanel
+,#DateFeed1Panel, #DateFeed2Panel, #DateFeed3Panel, #SaveControlPanel_data_feed_1, #SaveControlPanel_data_feed_2, #SaveControlPanel_data_feed_3, 
+#thingfulPanel, #SaveControlPanel_thingful {
     display: inline-block;
     width:100px;
     background-color: lightgrey;
@@ -242,7 +253,9 @@
 
 }
 
-#A4title, #A5title, #Geotitle, #saveStatetitle,#D9title, #D10title, #DataFeed1title , #saveStatetitle_data_feed_1, 
+#A2title,#A3title, #A4title, #A5title, #Geotitle, #saveStatetitle,#D9title, #D10title, 
+#DataFeed1title, #DataFeed2title, #DataFeed3title , 
+#saveStatetitle_data_feed_1, 
 #thingful_panel_title, #saveStatetitle_thingful {
 	margin-top: 4px;
 	color: black;
@@ -295,7 +308,10 @@ button#saveState_thingful:active, button#useState_thingful:active {
   right: 0;
 }
 
-#connect_D9_panel, #connect_D10_panel, #get_data_set_1_panel, #connect_data_feed_1_panel,
+#connect_D9_panel, #connect_D10_panel, 
+#get_data_set_1_panel, #connect_data_feed_1_panel, 
+#get_data_set_2_panel, #connect_data_feed_2_panel,
+#get_data_set_3_panel, #connect_data_feed_3_panel,
 #get_thingful_data_panel, #connect_thingful_data_panel {
     background-color: #ffa700;
     padding-top: 10px;
@@ -308,18 +324,21 @@ button#saveState_thingful:active, button#useState_thingful:active {
     opacity: 0.98;
 }
 
-#logic_statement_D9, #logic_statement_D10, #logic_statement_data_feed_1, #logic_statement_thingful_feed{
+#logic_statement_D9, #logic_statement_D10, #logic_statement_data_feed_1, #logic_statement_data_feed_2,#logic_statement_data_feed_3, #logic_statement_thingful_feed{
     font-size: 50px;
     margin-bottom: 10px;
 }
 
-#connect_D9_title, #connect_D10_title, #get_data_set_1_title, #connect_data_feed_1_title,
+#connect_D9_title, #connect_D10_title, 
+#get_data_set_1_title, #connect_data_feed_1_title, 
+#get_data_set_2_title, #connect_data_feed_2_title,
+#get_data_set_3_title, #connect_data_feed_3_title,
 #get_thingful_data_title, #connect_thingful_data_title{
     font-size: 20px;
 }
 
-#numbering_D9, #numbering_D10, #numbering_data_feed_1, 
-#numbering_thingful_data_feed{
+#numbering_D9, #numbering_D10, #numbering_data_feed_1, #numbering_data_feed_2,
+#numbering_data_feed_3 ,#numbering_thingful_data_feed{
     font-size: 40px;
     width:100px;
     height:50px;
@@ -329,6 +348,8 @@ button#saveState_thingful:active, button#useState_thingful:active {
 #greater_than_D9,#select_sensor_D9, #on_off_D9,
 #greater_than_D10,#select_sensor_D10, #on_off_D10,
 #greater_than_data_feed_1, #select_output_data_feed_1, #on_off_data_feed_1,
+#greater_than_data_feed_2, #select_output_data_feed_2, #on_off_data_feed_2,
+#greater_than_data_feed_3, #select_output_data_feed_3, #on_off_data_feed_3,
 #greater_than_thingful_data_feed, #select_output_thingful_data_feed, #on_off_thingful_data_feed{
     height:50px;
     vertical-align: middle;
@@ -339,6 +360,8 @@ button#saveState_thingful:active, button#useState_thingful:active {
 #check_logic_status_D9_sensor, #check_logic_status_D9_number, 
 #check_logic_status_D10_sensor, #check_logic_status_D10_number,
 #check_logic_status_data_feed_1_output, #check_logic_status_data_feed_1_number,
+#check_logic_status_data_feed_2_output, #check_logic_status_data_feed_2_number,
+#check_logic_status_data_feed_3_output, #check_logic_status_data_feed_3_number,
 #check_logic_status_thingful_data_feed_number, #check_logic_status_thingful_data_feed_output{
 	font-size:15px;
 	margin-bottom: 2px;
@@ -356,13 +379,13 @@ button#saveState_thingful:active, button#useState_thingful:active {
 	margin-bottom: 10px;
 }
 
-#instruction_logic_D9, #instruction_logic_D10, #instruction_logic_data_feed_1,
-#instruction_logic_thingful_feed{
+#instruction_logic_D9, #instruction_logic_D10, #instruction_logic_data_feed_1,#instruction_logic_data_feed_2,
+#instruction_logic_data_feed_3, #instruction_logic_thingful_feed{
 	font-size:12px;
 	margin-bottom: 10px;
 }
 
-#getData_connectivity_key_1, #getData_global_connectivity_key{
+#getData_connectivity_key_3, #getData_connectivity_key_2, #getData_connectivity_key_1, #getData_global_connectivity_key{
 	padding-left: 38px;
 	padding-right: 38px;
 	padding-top: 5px;
@@ -371,21 +394,21 @@ button#saveState_thingful:active, button#useState_thingful:active {
 	margin-bottom: 10px;
 }
 
-#userConnectKeyContent_1, #userGlobalConnectKeyContent{
+#userConnectKeyContent_3, #userConnectKeyContent_2, #userConnectKeyContent_1, #userGlobalConnectKeyContent{
 	font-size: 12px;
 }
 
-#confirmation_connect_1, #confirmation_global_connect{
+#confirmation_connect_3, #confirmation_connect_2, #confirmation_connect_1, #confirmation_global_connect{
 	margin-top:10px;
 	margin-bottom: 15px;
 }
 
-.useStoredConnectKey_1, .useStoredGlobalConnectKey{
+.useStoredConnectKey_3, .uscoeStoredConnectKey_2, .useStoredConnectKey_1, .useStoredGlobalConnectKey{
 	background-color: #AAAAAA;
 	margin-bottom: 15px;
 }
 
-#status_connect_key_1{
+#status_connect_key_1, #status_connect_key_2, #status_connect_key_3{
 	font-size:10px;
 	color:red;
 }

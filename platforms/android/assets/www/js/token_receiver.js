@@ -109,6 +109,8 @@ function lastSavedToken() {
     channelId = localStorage.channelId;
     analogSensor1 = localStorage.analogSensor1;
     analogSensor2 = localStorage.analogSensor2;
+    analogSensor3 = localStorage.analogSensor3;
+    analogSensor4 = localStorage.analogSensor4;
 
     $('#panel_title').html("Loading...");
 
@@ -178,6 +180,10 @@ function confirm() {
             $('#geoStatus').hide();
             $('.connectA4').hide();
             $('#connectA4status').hide();
+            $('.connectA3').hide();
+            $('#connectA3status').hide();
+            $('.connectA2').hide();
+            $('#connectA2status').hide();
             $('#tokenKeyPage').hide();
             $("#confirmationPage").hide();
             checkVisualStatus();
@@ -213,6 +219,8 @@ function reset() {
     channelId = undefined;
     analogSensor1 = undefined;
     analogSensor2 = undefined;
+    analogSensor3 = undefined;
+    analogSensor4 = undefined;
     $(".key").val('');
     $(".userApi").empty();
     $(".thingspeakApi").empty();
@@ -230,6 +238,8 @@ function reset() {
     var channelIDcheck = false;
     var analogSensor1check = false;
     var analogSensor2check = false;
+    var analogSensor3check = false;
+    var analogSensor4check = false;
     showConnectedThingspeakData();
     document.getElementById("connectedThingspeakPortals").innerHTML = "Not Connected to Thingspeak";
 

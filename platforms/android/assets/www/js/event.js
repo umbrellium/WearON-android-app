@@ -2,6 +2,8 @@ window.addEventListener("load", function load(event) {
   window.removeEventListener("load", load, false); //remove listener, no longer needed
   startApplication();
   console.log("load event.js");
+  //testing
+  // check_thingful_api();
 }, false);
 
 function startApplication() {
@@ -31,6 +33,8 @@ function startApplication() {
     $("#confirmationPage").hide();
     $("#anotherToken").hide();
     $("#AppContent").hide();
+    $('#connectA0error').hide();
+    $('#connectA1error').hide();
     $('#connectA2error').hide();
     $('#connectA3error').hide();
     $('#connectA4error').hide();
@@ -84,6 +88,8 @@ function openMainPage() {
   $("#anotherToken").hide();
 
   $("#AppContent").hide();
+  $('#connectA0error').hide();
+  $('#connectA1error').hide();
   $('#connectA2error').hide();
   $('#connectA3error').hide();
   $('#connectA4error').hide();

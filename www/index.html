@@ -139,6 +139,20 @@
      goes into End user's UI content --> 
     <div id="AppContent">
 
+    <div id="A0Bar">
+    <span id="valueA0"> </span>
+    <span id="checking"> </span>
+    <span id="connectA0error">*if unexpected, check connection</span>
+    <div id="connectA0status">Number of readings sent to Thingspeak: - </div>
+    </div>
+
+    <div id="A1Bar">
+    <span id="valueA1"> </span>
+    <span id="checking"> </span>
+    <span id="connectA1error">*if unexpected, check connection</span>
+    <div id="connectA1status">Number of readings sent to Thingspeak: - </div>
+    </div>
+
     <div id="A2Bar">
     <span id="valueA2"> </span>
     <span id="checking"> </span>
@@ -213,6 +227,18 @@
     <hr/>
 
     <div id="app_control_content">
+
+    <div id="A0ControlPanel">
+        <div id="A0title"><b> A0 </b></div>
+        <button type="button" class ="enableA0" onclick="app.toggelAnalogA0()"> Enable Pin</button> 
+        <button type="button" class ="connectA0" onclick="toggelConnectA0()">Connect to Thingspeak</button> 
+    </div>
+
+    <div id="A1ControlPanel">
+        <div id="A1title"><b> A1 </b></div>
+        <button type="button" class ="enableA1" onclick="app.toggelAnalogA1()"> Enable Pin</button> 
+        <button type="button" class ="connectA1" onclick="toggelConnectA1()">Connect to Thingspeak</button> 
+    </div>
 
     <div id="A2ControlPanel">
         <div id="A2title"><b> A2 </b></div>

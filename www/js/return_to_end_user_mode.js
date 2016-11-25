@@ -40,6 +40,8 @@ function openEndUserUI() {
 		$("#device_check_panel_D9_D10").hide();
 		$("#app_connectivity_control_content").hide();
 		$("#get_data_set_1_panel").hide();
+		$("#get_data_set_2_panel").hide();
+		$("#get_data_set_3_panel").hide();
 		$("#app_global_connectivity_control_content").hide();
 		$("#get_thingful_data_panel").hide();
 

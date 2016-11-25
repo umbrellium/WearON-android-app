@@ -193,6 +193,8 @@ app.connectTo = function(address) {
 					if (lockScreenStatus == false) {
 						//reset the store value of analog_enabled_A4, analog_enabled_A4, geolocation_enabled 
 						//so that app can keep track of status of them is app quit during end user mode
+						localStorage.analog_enabled_A0 = false;
+						localStorage.analog_enabled_A1 = false;
 						localStorage.analog_enabled_A2 = false;
 						localStorage.analog_enabled_A3 = false;
 						localStorage.analog_enabled_A4 = false;
@@ -235,6 +237,14 @@ app.connectTo = function(address) {
 							$('#geoStatus').hide();
 							$('.connectA4').hide();
 							$('#connectA4status').hide();
+							$('.connectA3').hide();
+							$('#connectA3status').hide();
+							$('.connectA2').hide();
+							$('#connectA2status').hide();
+							$('.connectA1').hide();
+							$('#connectA1status').hide();
+							$('.connectA0').hide();
+							$('#connectA0status').hide();
 							$('#connect_data_set_1').hide();
 							$('#connect_data_set_2').hide();
 							$('#connect_data_set_3').hide();
@@ -255,6 +265,18 @@ app.connectTo = function(address) {
 						connectedDevice = true;
 						$('#user_device_connection').html("*Device Connected*");
 						//get device's A4,A5,Geo portal to open again, if it was previously turn on before disconnected
+						if (analog_enabled_A0 == true) {
+							app.sendData([0xA0, 0x11, 0x00]);
+						}
+						if (analog_enabled_A1 == true) {
+							app.sendData([0xA0, 0x09, 0x00]);
+						}
+						if (analog_enabled_A2 == true) {
+							app.sendData([0xA0, 0x07, 0x00]);
+						}
+						if (analog_enabled_A3 == true) {
+							app.sendData([0xA0, 0x05, 0x00]);
+						}
 						if (analog_enabled_A4 == true) {
 							app.sendData([0xA0, 0x01, 0x00]);
 						}
@@ -379,6 +401,10 @@ app.disconnect = function(errorMessage) {
 		$("#AppControl").hide();
 		$("#AppConnectivityControl").hide();
 		$("#AppGlobalConnectivityControl").hide();
+		$('#valueA0').empty();
+		$('#valueA1').empty();
+		$('#valueA2').empty();
+		$('#valueA3').empty();
 		$('#valueA5').empty();
 		$('#valueA4').empty();
 		$('#geolocationValue').empty();
@@ -402,6 +428,16 @@ app.disconnect = function(errorMessage) {
 			app.toggelAnalogA2();
 			$('.connectA2').css("background-color", "white");
 			$('.connectA2').css("color", "black");
+		};
+		if (analog_enabled_A1 == true) {
+			app.toggelAnalogA1();
+			$('.connectA1').css("background-color", "white");
+			$('.connectA1').css("color", "black");
+		};
+		if (analog_enabled_A0 == true) {
+			app.toggelAnalogA0();
+			$('.connectA0').css("background-color", "white");
+			$('.connectA0').css("color", "black");
 		};
 		if (geolocation_enabled == true) {
 			app.toggleGeoTrack();
@@ -580,11 +616,15 @@ app.disconnect = function(errorMessage) {
 		clearInterval(getDataFeed_Thingful);
 
 		//END global connectivity panel //////
+		A0count = 0;
+		A1count = 0;
 		A2count = 0;
 		A3count = 0;
 		A4count = 0;
 		A5count = 0;
 		geoCount = 0;
+		document.getElementById("connectA0status").innerHTML = "Number of readings sent to Thingspeak: - ";
+		document.getElementById("connectA1status").innerHTML = "Number of readings sent to Thingspeak: - ";
 		document.getElementById("connectA2status").innerHTML = "Number of readings sent to Thingspeak: - ";
 		document.getElementById("connectA3status").innerHTML = "Number of readings sent to Thingspeak: - ";
 		document.getElementById("connectA4status").innerHTML = "Number of readings sent to Thingspeak: - ";

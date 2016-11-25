@@ -15,6 +15,8 @@ var analogSensor1;
 var analogSensor2;
 var analogSensor3;
 var analogSensor4;
+var analogSensor5;
+var analogSensor6;
 var userEmail;
 var userLockPassword;
 
@@ -26,6 +28,8 @@ var analogSensor1check = false;
 var analogSensor2check = false;
 var analogSensor3check = false;
 var analogSensor4check = false;
+var analogSensor5check = false;
+var analogSensor6check = false;
 
 //store user's connected device
 var connectedDevice;
@@ -43,19 +47,27 @@ var dataReceivedTracker = 0;
 var countTracker = 0;
 
 //store info on analog input
+var analog_enabled_A0 = false; // initially not connected
+var analog_enabled_A1 = false; // initially not connected
 var analog_enabled_A2 = false; // initially not connected
 var analog_enabled_A3 = false; // initially not connected
 var analog_enabled_A4 = false; // initially not connected
 var analog_enabled_A5 = false; // initially not connected
+var connect_to_A0 = false; // tracker to check whether A0 sending data to thingspeak
+var connect_to_A1 = false; // tracker to check whether A1 sending data to thingspeak
 var connect_to_A2 = false; // tracker to check whether A2 sending data to thingspeak
 var connect_to_A3 = false; // tracker to check whether A3 sending data to thingspeak
 var connect_to_A4 = false; // tracker to check whether A4 sending data to thingspeak
 var connect_to_A5 = false; // tracker to check whether A5 sending data to thingspeak
+var A0reading; // store A0 pin reading
+var A1reading; // store A1 pin reading
 var A2reading; // store A2 pin reading
 var A3reading; // store A3 pin reading
 var A4reading; // store A4 pin reading
 var A5reading; // store A5 pin reading
-var A2count = 0; // counting number of times A3 is sending data to thingspeak
+var A0count = 0; // counting number of times A0 is sending data to thingspeak
+var A1count = 0; // counting number of times A1 is sending data to thingspeak
+var A2count = 0; // counting number of times A2 is sending data to thingspeak
 var A3count = 0; // counting number of times A3 is sending data to thingspeak
 var A4count = 0; // counting number of times A4 is sending data to thingspeak
 var A5count = 0; // counting number of times A5 is sending data to thingspeak

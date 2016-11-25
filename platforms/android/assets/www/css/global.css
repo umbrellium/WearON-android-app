@@ -135,7 +135,7 @@
     vertical-align: bottom
 }
 
-#connectA2status, #connectA3status, #connectA5status, #connectA4status, #geoStatus, #storedData, #panel_title, #footnote, #note,
+#connectA0status, #connectA1status, #connectA2status, #connectA3status, #connectA5status, #connectA4status, #geoStatus, #storedData, #panel_title, #footnote, #note,
 #DataFeed1_content_status, #DataFeed2_content_status, #DataFeed3_content_status,#ThingfulFeed_content_status {
 	font-size: 12px;
 	opacity:0.5;
@@ -147,17 +147,17 @@
 	color:red;	
 }
 
-#A2Bar, #A3Bar, #A4Bar, #A5Bar, #GEOreading, #DataFeed1, #DataFeed2, #DataFeed3, #ThingfulFeed{
+#A0Bar, #A1Bar, #A2Bar, #A3Bar, #A4Bar, #A5Bar, #GEOreading, #DataFeed1, #DataFeed2, #DataFeed3, #ThingfulFeed{
   font-size: 30px;
   margin:5vw;
 }
 
-#connectA5status, #connectA4status, #connectA3status,#connectA2status, #geoStatus,
+#connectA5status, #connectA4status, #connectA3status,#connectA2status, #connectA1status,#connectA0status, #geoStatus,
 #DataFeed1_content_status,#DataFeed2_content_status, #DataFeed3_content_status,#ThingfulFeed_content_status{
 	margin-top: 5px;
 }
 
-#connectA2error,#connectA3error,#connectA4error, #connectA5error{
+#connectA0error,#connectA1error,#connectA2error,#connectA3error,#connectA4error, #connectA5error{
 	font-size: 12px;
 	opacity:0.5;
 	color: red;
@@ -172,7 +172,7 @@
 	opacity:0.5;
 }
 
-#valueA2,#valueA3, #valueA5, #valueA4, #geolocationValue{
+#valueA0,#valueA1,#valueA2,#valueA3, #valueA5, #valueA4, #geolocationValue{
 	margin-top: 10px;
 	margin-bottom: 10px;
 
@@ -182,7 +182,8 @@
 	font-size: 10px;
 }
 
-.enableA2, .connectA2,.enableA3, .connectA3, .enableA5, .connectA5, .enableA4, .connectA4, .enableGeoTrack, 
+.enableA0, .connectA0,.enableA1, .connectA1,.enableA2, .connectA2,.enableA3, 
+.connectA3, .enableA5, .connectA5, .enableA4, .connectA4, .enableGeoTrack, 
 .connectGeo, .enableD9, .connectD9, .enableD10, .connectD10 ,
 #saveState, #useState,  
 #get_data_set_1, #connect_data_set_1, 
@@ -202,7 +203,8 @@
 	margin:4px;
 }
 
-.enableA2,.enableA3, .enableA4, .enableA5, .enableD9, .connectD9, .enableD10, .connectD10 , 
+.enableA0,.enableA1,.enableA2,.enableA3, .enableA4, .enableA5, 
+.enableD9, .connectD9, .enableD10, .connectD10 , 
 #get_data_set_1, #connect_data_set_1,
 #get_data_set_2, #connect_data_set_2,
 #get_data_set_3, #connect_data_set_3,
@@ -242,7 +244,7 @@
 }
 
 
-#A2ControlPanel,#A3ControlPanel,#A4ControlPanel, #A5ControlPanel, #GEOControlPanel, #SaveControlPanel, #D9ControlPanel, #D10ControlPanel
+#A0ControlPanel, #A0ControlPanel, #A1ControlPanel, #A1ControlPanel, #A2ControlPanel, #A2ControlPanel,#A3ControlPanel,#A4ControlPanel, #A5ControlPanel, #GEOControlPanel, #SaveControlPanel, #D9ControlPanel, #D10ControlPanel
 ,#DateFeed1Panel, #DateFeed2Panel, #DateFeed3Panel, #SaveControlPanel_data_feed_1, #SaveControlPanel_data_feed_2, #SaveControlPanel_data_feed_3, 
 #thingfulPanel, #SaveControlPanel_thingful {
     display: inline-block;
@@ -253,7 +255,8 @@
 
 }
 
-#A2title,#A3title, #A4title, #A5title, #Geotitle, #saveStatetitle,#D9title, #D10title, 
+#A0title,#A1title,#A2title,#A3title, #A4title, #A5title, #Geotitle, 
+#saveStatetitle,#D9title, #D10title, 
 #DataFeed1title, #DataFeed2title, #DataFeed3title , 
 #saveStatetitle_data_feed_1, 
 #thingful_panel_title, #saveStatetitle_thingful {

@@ -9,6 +9,78 @@ app.receivedData = function(data) {
 			// manually getting the 2nd and 3rd data set ( value0 and value1)
 			var value = (data[i + 1] << 8) | data[i + 2];
 
+			//portal for A0 analog input pin 
+			if (data[i] === 0x0F) {
+				if (analog_enabled_A0) {
+
+					// if ((lockScreenStatus == true) || (userQuitApp == true)) {
+					// 	checkDataForUser();
+					// }
+
+					// if (digital_enabled_D9 == true) {
+					// 	initiateLogicA4_D9();
+					// }
+
+					// if (digital_enabled_D10 == true) {
+					// 	initiateLogicA4_D10();
+					// }
+
+					if (value > 0) {
+						A0reading = value;
+						document.getElementById("valueA0").innerHTML = "<b> A0 Reading = " + A0reading + "</b>";
+						$('#valueA0').css("color", "black");
+						$('.connectA0').show();
+						$('#connectA0error').hide();
+					} else if (A0reading == undefined) {
+						document.getElementById("valueA0").innerHTML = "<b> A0 Reading = " + A0reading + "</b>";
+						connect_to_A0 = false;
+						$('.connectA0').text('Connect to Thingspeak ' + analogSensor6);
+						$('.connectA0status').hide();
+						$('#connectA0error').show();
+					} else {
+						document.getElementById("valueA0").innerHTML = "<b> A0 Reading = " + A0reading + "</b>";
+						$('#valueA0').css("color", "red");
+						$('#connectA0error').show();
+					}
+				}
+			}
+
+			//portal for A1 analog input pin 
+			if (data[i] === 0x0E) {
+				if (analog_enabled_A1) {
+
+					// if ((lockScreenStatus == true) || (userQuitApp == true)) {
+					// 	checkDataForUser();
+					// }
+
+					// if (digital_enabled_D9 == true) {
+					// 	initiateLogicA4_D9();
+					// }
+
+					// if (digital_enabled_D10 == true) {
+					// 	initiateLogicA4_D10();
+					// }
+
+					if (value > 0) {
+						A1reading = value;
+						document.getElementById("valueA1").innerHTML = "<b> A1 Reading = " + A1reading + "</b>";
+						$('#valueA1').css("color", "black");
+						$('.connectA1').show();
+						$('#connectA1error').hide();
+					} else if (A1reading == undefined) {
+						document.getElementById("valueA1").innerHTML = "<b> A1 Reading = " + A1reading + "</b>";
+						connect_to_A1 = false;
+						$('.connectA1').text('Connect to Thingspeak ' + analogSensor5);
+						$('.connectA1status').hide();
+						$('#connectA1error').show();
+					} else {
+						document.getElementById("valueA1").innerHTML = "<b> A1 Reading = " + A1reading + "</b>";
+						$('#valueA1').css("color", "red");
+						$('#connectA1error').show();
+					}
+				}
+			}
+
 			//portal for A2 analog input pin 
 			if (data[i] === 0x0D) {
 				if (analog_enabled_A2) {
@@ -158,7 +230,7 @@ app.receivedData = function(data) {
 			// 		{
 			// 		$('#digitalInputResult').text(data[1] ? 'High' : 'Low');
 			// 		}
-			else if (data[i] === 0x0E) {
+			else if (data[i] === 0xB0) {
 				// alert("hey");
 				//send a tracker count to phone, for debugging if app quit by accident
 				// activate();
@@ -178,6 +250,111 @@ app.receivedData = function(data) {
 		// alert('Error - No device connected.');
 	}
 
+};
+//enable/disable A0 analog pin on and off
+app.toggelAnalogA0 = function() {
+	if (analog_enabled_A0) {
+		analog_enabled_A0 = false;
+		localStorage.analog_enabled_A0 = analog_enabled_A0;
+		app.sendData([0xA0, 0x12, 0x00]); // send to hardware to turn A0 off
+		$('#valueA0').empty();
+		$('.connectA0').hide();
+		$('#connectA0status').hide();
+		$('#connectA0error').hide();
+		$('.enableA0').css("background-color", "white");
+		$('.enableA0').css("color", "black");
+		$('.enableA0').text('Enable Pin');
+		$('.connectA0').text('Connect to Thingspeak ');
+		connect_to_A0 = false;
+		$('.connectA0').css("background-color", "white");
+		$('.connectA0').css("color", "black");
+
+		// if (show_panel_D9 == true) {
+		// 	if (A5_on_D9 == false) { // if A4 for D9 selected
+		// 		checkLogicD9_number();
+		// 	}
+		// }
+
+		// if (show_panel_D10 == true) {
+		// 	if (A5_on_D10 == false) { // if A4 for D10 selected
+		// 		checkLogicD10_number();
+		// 	}
+		// }
+
+	} else {
+		analog_enabled_A0 = true;
+		localStorage.analog_enabled_A0 = analog_enabled_A0;
+		app.sendData([0xA0, 0x11, 0x00]); // send to hardware to turn A0 on
+		$('.enableA0').css("background-color", "black");
+		$('.enableA0').css("color", "white");
+		$('.enableA0').text('Disable Pin');
+
+		// if (show_panel_D9 == true) {
+		// 	if (A5_on_D9 == false) { // if A4 for D9 selected
+		// 		checkLogicD9_number();
+		// 	}
+		// }
+
+		// if (show_panel_D10 == true) {
+		// 	if (A5_on_D10 == false) { // if A4 for D10 selected
+		// 		checkLogicD10_number();
+		// 	}
+		// }
+
+	}
+};
+
+//enable/disable A1 analog pin on and off
+app.toggelAnalogA1 = function() {
+	if (analog_enabled_A1) {
+		analog_enabled_A1 = false;
+		localStorage.analog_enabled_A1 = analog_enabled_A1;
+		app.sendData([0xA0, 0x10, 0x00]); // send to hardware to turn A1 off
+		$('#valueA1').empty();
+		$('.connectA1').hide();
+		$('#connectA1status').hide();
+		$('#connectA1error').hide();
+		$('.enableA1').css("background-color", "white");
+		$('.enableA1').css("color", "black");
+		$('.enableA1').text('Enable Pin');
+		$('.connectA1').text('Connect to Thingspeak ');
+		connect_to_A1 = false;
+		$('.connectA1').css("background-color", "white");
+		$('.connectA1').css("color", "black");
+
+		// if (show_panel_D9 == true) {
+		// 	if (A5_on_D9 == false) { // if A4 for D9 selected
+		// 		checkLogicD9_number();
+		// 	}
+		// }
+
+		// if (show_panel_D10 == true) {
+		// 	if (A5_on_D10 == false) { // if A4 for D10 selected
+		// 		checkLogicD10_number();
+		// 	}
+		// }
+
+	} else {
+		analog_enabled_A1 = true;
+		localStorage.analog_enabled_A1 = analog_enabled_A1;
+		app.sendData([0xA0, 0x09, 0x00]); // send to hardware to turn A1 on
+		$('.enableA1').css("background-color", "black");
+		$('.enableA1').css("color", "white");
+		$('.enableA1').text('Disable Pin');
+
+		// if (show_panel_D9 == true) {
+		// 	if (A5_on_D9 == false) { // if A4 for D9 selected
+		// 		checkLogicD9_number();
+		// 	}
+		// }
+
+		// if (show_panel_D10 == true) {
+		// 	if (A5_on_D10 == false) { // if A4 for D10 selected
+		// 		checkLogicD10_number();
+		// 	}
+		// }
+
+	}
 };
 
 //enable/disable A2 analog pin on and off

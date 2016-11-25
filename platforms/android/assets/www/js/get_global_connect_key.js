@@ -83,7 +83,7 @@ function get_Data_feed_from_thingful() {
 
     var z = 0;
     var id = Thing_ID;
-    var x = "http://api.thingful.net/things/" + id;
+    var x = "https://api.thingful.net/things/" + id;
 
     $.get(x,
         function(data, status) {
@@ -104,9 +104,10 @@ function Confirm_global_connect() {
 
     var z = 0;
     var id = Thing_ID;
-    var x = "http://api.thingful.net/things/" + id;
+    var x = "https://api.thingful.net/things/" + id;
     $.get(x,
         function(data, status) {
+            console.log(data);
             var y = data.data;
             for (i = 0; i < (y.attributes.channels.length); i++) {
                 if (y.attributes.channels[i].id == Thing_data_set) { //if success in matching name of data set 
@@ -121,6 +122,35 @@ function Confirm_global_connect() {
                     get_thingful_success = false;
                 }
             }
+        });
+
+}
+
+//testing new thingful api
+function check_thingful_api() {
+
+    var z = 0;
+    var id = Thing_ID;
+    var x = "https://api.thingful.net/things/4qf37xqr";
+    $.get(x,
+        function(data, status) {
+            console.log(data.data);
+            var y = data.data;
+            console.log(y[0].attributes.channels[0]);
+            // var y = data.data;
+            // for (i = 0; i < (y.attributes.channels.length); i++) {
+            //     if (y.attributes.channels[i].id == Thing_data_set) { //if success in matching name of data set 
+            //         z = i;
+            //         $("#ThingfulFeed").show();
+            //         $("#ThingfulFeed_content").html("<b>Thing's Reading =" + y.attributes.channels[i].value + "</b>");
+            //         $("#ThingfulFeed_content_status").html("Data obtained successfully");
+            //         get_thingful_success = true;
+            //         toggelgetThingful();
+            //         gettingDataFeed_Thingful();
+            //     } else if (y.attributes.channels[z].id != Thing_data_set) {
+            //         get_thingful_success = false;
+            //     }
+            // }
         });
 
 }

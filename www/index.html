@@ -42,6 +42,7 @@
     <script src="js/get_thingful_thing.js"></script>
     <script src="js/global_connectivity_ctrl_panel_save.js"></script>
     <script src="js/get_global_connect_key.js"></script>
+    <script src="js/thingful_explorer.js"></script>
 
  </head>
 
@@ -499,6 +500,11 @@
         <div id="app_global_connectivity_control_content">
         <div class="sub_instruction"> * User can connect up to 1 Thing from Thingful* </div>
 
+        <div id="thingfulExplorer">
+            <div id="thingful_explorer_title"><b> Thingful Explorer </b></div>
+            <button type="button" id="explore_thingful" onclick="toggelexploreThingful()"> Explore</button> 
+        </div>
+
         <div id="thingfulPanel">
             <div id="thingful_panel_title"><b> Thingful feed </b></div>
             <button type="button" id="get_thingful" onclick="toggelgetThingful()"> Retrieve</button> 
@@ -514,7 +520,7 @@
         </div>
     </div></center>
 
-    <!-- panel to retrive thing data from thingful -->
+<!-- panel to retrive thing data from thingful -->
     <center><div id="get_thingful_data_panel">
         <div id="get_thingful_data_title"><b>Input Global Connectivity Key</b></div>
         <br>
@@ -533,6 +539,12 @@
         <button type="button" class="restart_global_connect" onclick="restart_global_connect()"> Restart </button>
         </div>
 
+    </div></center>
+
+
+<!-- panel for thingful explorer -->
+    <center><div id="get_thingful_explorer_panel">
+        <div id="get_thingful_explorer_title"><b>Thingful Explorer</b></div>
     </div></center>
 
 <!-- logic connection panel for data feed 1 -->

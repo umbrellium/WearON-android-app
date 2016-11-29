@@ -60,6 +60,7 @@ function startApplication() {
     $("#get_data_set_2_panel").hide();
     $("#get_data_set_3_panel").hide();
     $("#get_thingful_data_panel").hide();
+    $("#get_thingful_explorer_panel").hide();
   }
 
 }
@@ -119,6 +120,7 @@ function openMainPage() {
   $("#get_data_set_2_panel").hide();
   $("#get_data_set_3_panel").hide();
   $("#get_thingful_data_panel").hide();
+  $("#get_thingful_explorer_panel").hide();
   $('#confirm_connection_D9').hide();
   $('#connect_data_set_1').hide();
   $('#connect_data_set_2').hide();

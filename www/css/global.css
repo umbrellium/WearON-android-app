@@ -193,7 +193,8 @@
 #saveState_data_feed_2, #useState_data_feed_2,
 #saveState_data_feed_1, #useState_data_feed_1, 
 #get_thingful, #connect_thingful,
-#saveState_thingful, #useState_thingful{
+#saveState_thingful, #useState_thingful,
+#explore_thingful{
 	font-size: 15px;
 	background-color: white;
 	color:black;
@@ -208,7 +209,7 @@
 #get_data_set_1, #connect_data_set_1,
 #get_data_set_2, #connect_data_set_2,
 #get_data_set_3, #connect_data_set_3,
-#get_thingful, #connect_thingful {
+#get_thingful, #connect_thingful, #explore_thingful {
 	padding-left: 18px;
 	padding-right: 18px;
 }
@@ -246,7 +247,7 @@
 
 #A0ControlPanel, #A0ControlPanel, #A1ControlPanel, #A1ControlPanel, #A2ControlPanel, #A2ControlPanel,#A3ControlPanel,#A4ControlPanel, #A5ControlPanel, #GEOControlPanel, #SaveControlPanel, #D9ControlPanel, #D10ControlPanel
 ,#DateFeed1Panel, #DateFeed2Panel, #DateFeed3Panel, #SaveControlPanel_data_feed_1, #SaveControlPanel_data_feed_2, #SaveControlPanel_data_feed_3, 
-#thingfulPanel, #SaveControlPanel_thingful {
+#thingfulPanel, #SaveControlPanel_thingful, #thingfulExplorer {
     display: inline-block;
     width:100px;
     background-color: lightgrey;
@@ -259,7 +260,8 @@
 #saveStatetitle,#D9title, #D10title, 
 #DataFeed1title, #DataFeed2title, #DataFeed3title , 
 #saveStatetitle_data_feed_1, 
-#thingful_panel_title, #saveStatetitle_thingful {
+#thingful_panel_title, #saveStatetitle_thingful,
+#thingful_explorer_title {
 	margin-top: 4px;
 	color: black;
 }
@@ -315,7 +317,8 @@ button#saveState_thingful:active, button#useState_thingful:active {
 #get_data_set_1_panel, #connect_data_feed_1_panel, 
 #get_data_set_2_panel, #connect_data_feed_2_panel,
 #get_data_set_3_panel, #connect_data_feed_3_panel,
-#get_thingful_data_panel, #connect_thingful_data_panel {
+#get_thingful_data_panel, #connect_thingful_data_panel,
+#get_thingful_explorer_panel {
     background-color: #ffa700;
     padding-top: 10px;
     font-size: 12px;
@@ -336,7 +339,8 @@ button#saveState_thingful:active, button#useState_thingful:active {
 #get_data_set_1_title, #connect_data_feed_1_title, 
 #get_data_set_2_title, #connect_data_feed_2_title,
 #get_data_set_3_title, #connect_data_feed_3_title,
-#get_thingful_data_title, #connect_thingful_data_title{
+#get_thingful_data_title, #connect_thingful_data_title,
+#get_thingful_explorer_title{
     font-size: 20px;
 }
 

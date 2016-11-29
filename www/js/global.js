@@ -149,6 +149,9 @@ var Thing_ID;
 var Thing_data_set;
 var thingful_reading;
 
+//thingful explorer
+var open_thingful_explorer = false; // toggle check for opening get thingful explorer panel
+
 
 //track thingspeak connection
 function showConnectedThingspeakData() {
@@ -934,6 +937,7 @@ function openAppGlobalConnectivity() {
     $('#show_global_connectivity_panel').css("color", "black");
     $("#app_global_connectivity_control_content").hide();
     $("#get_thingful_data_panel").hide();
+    $("#get_thingful_explorer_panel").hide();
     $("#connect_thingful_data_panel").hide();
 
   } else {

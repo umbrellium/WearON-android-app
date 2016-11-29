@@ -544,7 +544,13 @@
 
 <!-- panel for thingful explorer -->
     <center><div id="get_thingful_explorer_panel">
-        <div id="get_thingful_explorer_title"><b>Thingful Explorer</b></div>
+        <div id="get_thingful_explorer_title"><b>Connect to IoT Devices Near You</b></div>
+        <br>
+        <span style="font-size:15px;">Search Radius(m):</span></b>
+        <input type="range" id="search-rad" value="200" min="100" max="500" style="width:180px;" onchange="slider_value.value=value">
+        <output style="font-size:20px;" id="slider_value">200</output><br>
+        <button type = "button" id ="pre-search" data-loading-text = "exploring..." style="margin-top:10px;margin-bottom: 5px; padding-left:15px; padding-right:20px; font-size:15px;" onclick="startQuery()"> EXPLORE </button>
+        <div id="all_devices"></div>
     </div></center>
 
 <!-- logic connection panel for data feed 1 -->

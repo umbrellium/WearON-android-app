@@ -317,8 +317,7 @@ button#saveState_thingful:active, button#useState_thingful:active {
 #get_data_set_1_panel, #connect_data_feed_1_panel, 
 #get_data_set_2_panel, #connect_data_feed_2_panel,
 #get_data_set_3_panel, #connect_data_feed_3_panel,
-#get_thingful_data_panel, #connect_thingful_data_panel,
-#get_thingful_explorer_panel {
+#get_thingful_data_panel, #connect_thingful_data_panel {
     background-color: #ffa700;
     padding-top: 10px;
     font-size: 12px;
@@ -328,6 +327,25 @@ button#saveState_thingful:active, button#useState_thingful:active {
     position: fixed;
     right: 0;   
     opacity: 0.98;
+}
+
+#get_thingful_explorer_panel {
+    background-color: #2d2d2d;
+    color:white;
+    padding-top: 10px;
+    font-size: 12px;
+    color: black;
+    bottom: 0%;
+    left: 0;
+    right: 0;   
+    opacity: 0.98;
+    min-width:100vw;
+    min-height:100vh;
+    overflow:visible;
+    z-index: +100;
+    margin-top: -420px;
+    margin-left: -8px;
+
 }
 
 #logic_statement_D9, #logic_statement_D10, #logic_statement_data_feed_1, #logic_statement_data_feed_2,#logic_statement_data_feed_3, #logic_statement_thingful_feed{
@@ -342,6 +360,10 @@ button#saveState_thingful:active, button#useState_thingful:active {
 #get_thingful_data_title, #connect_thingful_data_title,
 #get_thingful_explorer_title{
     font-size: 20px;
+}
+
+#get_thingful_explorer_title{
+  color:white;
 }
 
 #numbering_D9, #numbering_D10, #numbering_data_feed_1, #numbering_data_feed_2,
@@ -424,4 +446,44 @@ button#saveState_thingful:active, button#useState_thingful:active {
   font-size: 14px;
   color:#313131;
   padding:2vw;
+}
+
+#all_devices{
+  width:100vw;
+  max-height:250px;
+  overflow-y: scroll;
+  color:white;
+}
+
+button.deviceDataset:active{
+  color:white;
+  background-color: black;
+}
+
+button.environment:active, button.transport:active, button.energy:active, button.home:active, button.miscellaneous:active,
+button.experiment:active, button.health:active{
+  color:white;
+}
+
+#filter{
+  font-size: 20px;
+  color:white;
+}
+
+#close_panel_thingful_explorer button{
+  font-size: 20px;
+  padding-left:5vw;
+  padding-right: 5vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin:1px;
+  background-color: red;
+  color:white;
+  box-shadow: none;
+  border:none;
+}
+
+#device_detail{
+  font-size: 20px;
+  color:white;
 }

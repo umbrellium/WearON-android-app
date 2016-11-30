@@ -43,6 +43,7 @@
     <script src="js/global_connectivity_ctrl_panel_save.js"></script>
     <script src="js/get_global_connect_key.js"></script>
     <script src="js/thingful_explorer.js"></script>
+    <script src="js/thingful_explorer_filter_category.js"></script>
 
  </head>
 
@@ -502,7 +503,7 @@
 
         <div id="thingfulExplorer">
             <div id="thingful_explorer_title"><b> Thingful Explorer </b></div>
-            <button type="button" id="explore_thingful" onclick="toggelexploreThingful()"> Explore</button> 
+            <button type="button" id="explore_thingful" onclick="toggelexploreThingful()"> Explore </button> 
         </div>
 
         <div id="thingfulPanel">
@@ -543,15 +544,40 @@
 
 
 <!-- panel for thingful explorer -->
-    <center><div id="get_thingful_explorer_panel">
-        <div id="get_thingful_explorer_title"><b>Connect to IoT Devices Near You</b></div>
+    <div id="get_thingful_explorer_panel">
         <br>
-        <span style="font-size:15px;">Search Radius(m):</span></b>
+        <center><div id="get_thingful_explorer_title"><b>Connect to IoT Devices Near You</b></div>
+        <br>
+        <span style="font-size:15px; color:white;">Search Radius(m):</span></b>
         <input type="range" id="search-rad" value="200" min="100" max="500" style="width:180px;" onchange="slider_value.value=value">
-        <output style="font-size:20px;" id="slider_value">200</output><br>
-        <button type = "button" id ="pre-search" data-loading-text = "exploring..." style="margin-top:10px;margin-bottom: 5px; padding-left:15px; padding-right:20px; font-size:15px;" onclick="startQuery()"> EXPLORE </button>
-        <div id="all_devices"></div>
-    </div></center>
+        <output style="font-size:20px; color:white;" id="slider_value">200</output><br>
+        <button type = "button" id ="pre-search" data-loading-text = "exploring..." style="margin-top:10px;margin-bottom: 5px; padding-left:15px; padding-right:20px; font-size:20px;" onclick="startQuery()"> EXPLORE </button></center>
+        <div id="all_devices"><center>*Make sure you have enabled geolocation tracking*</center></div>
+        <center><div id="filter" hidden>
+        <hr>
+          Available Categories to Filter By: 
+          <button id="filter_environment" style="font-size:15px; padding:5px; margin:1px; background-color:#0098D4; outline:none; border-style: none;" onclick="toggleFilterEnvironment()" hidden >Environment</button>
+
+          <button id="filter_transport" style="font-size:15px; padding:5px;margin:1px; background-color:#AD4FD9; outline:none; border-style: none;" onclick="toggleFilterTransport()" hidden >Transport</button>
+
+          <button id="filter_energy" style="font-size:15px; padding:5px;margin:1px; background-color:#FFDC36; outline:none; border-style: none;" onclick="toggleFilterEnergy()" hidden >Energy</button>
+
+          <button id="filter_home" style="font-size:15px; padding:5px;margin:1px; background-color:#EE7C0E; outline:none; border-style: none;" onclick="toggleFilterHome()" hidden >Home</button>
+
+          <button id="filter_miscellaneous" style="font-size:15px; padding:5px;margin:1px; background-color:#A0A5A9; outline:none; border-style: none;" onclick="toggleFilterMiscellaneous()" hidden >Miscellaneous</button>
+
+          <button id="filter_experiment" style="font-size:15px; padding:5px;margin:1px; background-color:#EA6DEC; outline:none; border-style: none;" onclick="toggleFilterExperiment()" hidden >Experiment</button>
+
+          <button id="filter_health" style="font-size:15px; padding:5px;margin:1px; background-color:#E4271E; outline:none; border-style: none;" onclick="toggleFilterHealth()" hidden >Health</button>
+        </div></center>
+
+        <div id="device_detail"></div>
+
+        <center><div id="close_panel_thingful_explorer">
+        <hr>
+        <button id="close_panel_button_thingful_explorer" style=" margin-bottom: 10px;" onclick="toggelexploreThingful()">Close Panel</button>
+        </div></center>
+    </div>
 
 <!-- logic connection panel for data feed 1 -->
     <center><div id="connect_thingful_data_panel">

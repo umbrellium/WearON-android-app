@@ -14,12 +14,16 @@ function toggelexploreThingful() {
     $('#explore_thingful').css("color", "black");
     $('#explore_thingful').html("Explore");
     $("#get_thingful_explorer_panel").hide();
+    $("#disconnectDevice").show();
+    $("#visual_panel").show();
   } else {
     open_thingful_explorer = true;
     $('#explore_thingful').css("background-color", "black");
     $('#explore_thingful').css("color", "white");
     $('#explore_thingful').html("Close Panel");
     $("#get_thingful_explorer_panel").show();
+    $("#disconnectDevice").hide();
+    $("#visual_panel").hide();
   }
 }
 
@@ -32,7 +36,7 @@ function startQuery() {
   console.clear();
   $("#all_devices").empty();
   resetVariable();
-  // resetFilter();
+  resetFilter();
   var rad = $('#search-rad').val();
   search(LING_API_KEY, "q=" + "&geo-lat=" + myLocationLat + "&geo-long=" + myLocationLong + "&geo-radius=" + rad + "&limit=500&sort=distance");
 }
@@ -55,8 +59,8 @@ function search(_apikey, _options, _rawAddress) {
     crossDomain: true,
     success: function(response) {
       // $(".btn").button('reset');
-      // console.log("raw response\n", response);
-
+      //add a line underneath EXPLORE button
+      $('#all_devices').append("<hr>");
       //show all the devices scanned and within boundary
       var all_data = response.data;
       for (var i = 0; i < all_data.length; i++) {
@@ -69,10 +73,11 @@ function search(_apikey, _options, _rawAddress) {
       }
     },
     error: function(xhr, error) {
-      $(".btn").button('reset');
+      // $(".btn").button('reset');
       console.debug(xhr);
       console.debug(error);
-      alert("something went wrong: " + error);
+      $('#all_devices').html("<center>*Make sure you have enabled geolocation tracking*</center>");
+      // alert("something went wrong: " + error);
     },
 
   });
@@ -115,7 +120,7 @@ function validateDevice(id) {
       }
 
       var htmlString =
-        '<button class=' + device_category[id] + ' style="font-size:15px; padding:5px; margin:2px;  outline:none; border-style: none; background-color:' + catergoryColour + ';"onclick="accessDevice(\'' +
+        '<button class=' + device_category[id] + ' style="font-size:20px; padding:5px; margin:2px;  outline:none; border-style: none; background-color:' + catergoryColour + ';"onclick="accessDevice(\'' +
         id + '\')">' +
         '<span class= "deviceName">' + device_name[id] + '</span>' +
         '</button>';
@@ -125,7 +130,35 @@ function validateDevice(id) {
   });
 }
 
-//reset variables when user click "pre-search"
+//when user click on specific device to look at data
+function accessDevice(deviceID) {
+  $('#device_detail').empty();
+
+  var url_access = "https://api.thingful.net/access?uid=" + deviceID;
+  $.ajax({
+    url: url_access,
+    headers: {
+      "Authorization": "Bearer APIKey-Znd5MnpoYWE2d2Rj-ZjRrandwcHNxZno2ZnpkNHBlZGNiOWhq"
+    },
+    type: "GET",
+    crossDomain: true,
+    success: function(response) {
+      var data = response.data;
+      var all_channels = data[0].attributes.channels;
+      $('#device_detail').append("<hr>");
+      $('#device_detail').append("Device Name: " + data[0].attributes.title + "<br>");
+      for (var i = 0; i < all_channels.length; i++) {
+        var htmlStringFilter =
+          '<button class=deviceDataset style="font-size:20px; margin:2px; outline:none; border-style: none; "onclick="accessDataset(\'' +
+          deviceID + '\')">' + all_channels[i].id + ": " + all_channels[i].value +
+          '</button><br>';
+        $('#device_detail').append(htmlStringFilter);
+      }
+    },
+  });
+}
+
+//reset variables when user click "EXPLORE"
 function resetVariable() {
   device_name = [];
   device_id = [];

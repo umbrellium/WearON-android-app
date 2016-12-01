@@ -5,6 +5,7 @@ var device_channels = [];
 var catergoryColour;
 var get_thingful_dataset = false;
 var LING_API_KEY = "APIKey-Znd5MnpoYWE2d2Rj-ZjRrandwcHNxZno2ZnpkNHBlZGNiOWhq";
+var accessThingfulDatasetPeriodically;
 
 
 function toggelexploreThingful() {
@@ -14,6 +15,8 @@ function toggelexploreThingful() {
       $('#explore_thingful').css("background-color", "white");
       $('#explore_thingful').css("color", "black");
       $('#explore_thingful').html("Explore");
+      $('#explore_thingful').css("padding-left", "");
+      $('#explore_thingful').css("padding-right", "");
       $("#connect_explore_thingful").hide();
     } else if (get_thingful_dataset === true) { //if retrieval of data set from thingful is successful
       $('#explore_thingful').css("background-color", "black");
@@ -188,7 +191,7 @@ function accessDataset(deviceID) {
   $("#filter").hide();
   $("#device_detail").empty();
   //access dataset periodically 
-  setInterval(function() {
+  accessThingfulDatasetPeriodically = setInterval(function() {
     accessDatasetPeriodically(datasetInfo[0], datasetInfo[1]);
   }, 60000); //access every 1 min
 }

@@ -136,7 +136,7 @@
 }
 
 #connectA0status, #connectA1status, #connectA2status, #connectA3status, #connectA5status, #connectA4status, #geoStatus, #storedData, #panel_title, #footnote, #note,
-#DataFeed1_content_status, #DataFeed2_content_status, #DataFeed3_content_status,#ThingfulFeed_content_status {
+#DataFeed1_content_status, #DataFeed2_content_status, #DataFeed3_content_status,#ThingfulFeed_content_status, #ThingfulExplorerFeed_content_status {
 	font-size: 12px;
 	opacity:0.5;
 }
@@ -147,13 +147,13 @@
 	color:red;	
 }
 
-#A0Bar, #A1Bar, #A2Bar, #A3Bar, #A4Bar, #A5Bar, #GEOreading, #DataFeed1, #DataFeed2, #DataFeed3, #ThingfulFeed{
+#A0Bar, #A1Bar, #A2Bar, #A3Bar, #A4Bar, #A5Bar, #GEOreading, #DataFeed1, #DataFeed2, #DataFeed3, #ThingfulFeed, #ThingfulExplorerFeed{
   font-size: 30px;
   margin:5vw;
 }
 
 #connectA5status, #connectA4status, #connectA3status,#connectA2status, #connectA1status,#connectA0status, #geoStatus,
-#DataFeed1_content_status,#DataFeed2_content_status, #DataFeed3_content_status,#ThingfulFeed_content_status{
+#DataFeed1_content_status,#DataFeed2_content_status, #DataFeed3_content_status,#ThingfulFeed_content_status, #ThingfulExplorerFeed_content_status{
 	margin-top: 5px;
 }
 
@@ -194,7 +194,7 @@
 #saveState_data_feed_1, #useState_data_feed_1, 
 #get_thingful, #connect_thingful,
 #saveState_thingful, #useState_thingful,
-#explore_thingful{
+#explore_thingful, #connect_explore_thingful{
 	font-size: 15px;
 	background-color: white;
 	color:black;
@@ -209,7 +209,7 @@
 #get_data_set_1, #connect_data_set_1,
 #get_data_set_2, #connect_data_set_2,
 #get_data_set_3, #connect_data_set_3,
-#get_thingful, #connect_thingful, #explore_thingful {
+#get_thingful, #connect_thingful, #explore_thingful, #connect_explore_thingful {
 	padding-left: 18px;
 	padding-right: 18px;
 }
@@ -317,7 +317,7 @@ button#saveState_thingful:active, button#useState_thingful:active {
 #get_data_set_1_panel, #connect_data_feed_1_panel, 
 #get_data_set_2_panel, #connect_data_feed_2_panel,
 #get_data_set_3_panel, #connect_data_feed_3_panel,
-#get_thingful_data_panel, #connect_thingful_data_panel {
+#get_thingful_data_panel, #connect_thingful_data_panel, #connect_thingful_explorer_panel {
     background-color: #ffa700;
     padding-top: 10px;
     font-size: 12px;
@@ -343,12 +343,13 @@ button#saveState_thingful:active, button#useState_thingful:active {
     min-height:100vh;
     overflow:visible;
     z-index: +100;
-    margin-top: -420px;
+    margin-top: -300px;
     margin-left: -8px;
-
 }
 
-#logic_statement_D9, #logic_statement_D10, #logic_statement_data_feed_1, #logic_statement_data_feed_2,#logic_statement_data_feed_3, #logic_statement_thingful_feed{
+#logic_statement_D9, #logic_statement_D10, #logic_statement_data_feed_1, 
+#logic_statement_data_feed_2,#logic_statement_data_feed_3, #logic_statement_thingful_feed,
+#logic_statement_thingful_explorer{
     font-size: 50px;
     margin-bottom: 10px;
 }
@@ -358,7 +359,7 @@ button#saveState_thingful:active, button#useState_thingful:active {
 #get_data_set_2_title, #connect_data_feed_2_title,
 #get_data_set_3_title, #connect_data_feed_3_title,
 #get_thingful_data_title, #connect_thingful_data_title,
-#get_thingful_explorer_title{
+#get_thingful_explorer_title, #connect_thingful_explorer_title{
     font-size: 20px;
 }
 
@@ -367,7 +368,7 @@ button#saveState_thingful:active, button#useState_thingful:active {
 }
 
 #numbering_D9, #numbering_D10, #numbering_data_feed_1, #numbering_data_feed_2,
-#numbering_data_feed_3 ,#numbering_thingful_data_feed{
+#numbering_data_feed_3 ,#numbering_thingful_data_feed, #numbering_thingful_explorer{
     font-size: 40px;
     width:100px;
     height:50px;
@@ -379,7 +380,8 @@ button#saveState_thingful:active, button#useState_thingful:active {
 #greater_than_data_feed_1, #select_output_data_feed_1, #on_off_data_feed_1,
 #greater_than_data_feed_2, #select_output_data_feed_2, #on_off_data_feed_2,
 #greater_than_data_feed_3, #select_output_data_feed_3, #on_off_data_feed_3,
-#greater_than_thingful_data_feed, #select_output_thingful_data_feed, #on_off_thingful_data_feed{
+#greater_than_thingful_data_feed, #select_output_thingful_data_feed, #on_off_thingful_data_feed,
+#greater_than_thingful_explorer, #select_output_thingful_explorer, #on_off_thingful_explorer{
     height:50px;
     vertical-align: middle;
     font-size: 40px;
@@ -391,12 +393,15 @@ button#saveState_thingful:active, button#useState_thingful:active {
 #check_logic_status_data_feed_1_output, #check_logic_status_data_feed_1_number,
 #check_logic_status_data_feed_2_output, #check_logic_status_data_feed_2_number,
 #check_logic_status_data_feed_3_output, #check_logic_status_data_feed_3_number,
-#check_logic_status_thingful_data_feed_number, #check_logic_status_thingful_data_feed_output{
+#check_logic_status_thingful_data_feed_number, #check_logic_status_thingful_data_feed_output,
+#check_logic_status_thingful_explorer_number, #check_logic_status_thingful_explorer_output
+{
 	font-size:15px;
 	margin-bottom: 2px;
 }
 
-#check_overall_logic_status_D9, #check_overall_logic_status_D10, #check_overall_logic_status_data_feed_1,
+#check_overall_logic_status_D9, #check_overall_logic_status_D10, #check_overall_logic_status_data_feed_1, 
+#check_overall_logic_status_data_feed_2, #check_overall_logic_status_data_feed_3,
 #check_overall_logic_thingful_status_data_feed{
 	font-size:20px;	
 	color:red;
@@ -409,7 +414,7 @@ button#saveState_thingful:active, button#useState_thingful:active {
 }
 
 #instruction_logic_D9, #instruction_logic_D10, #instruction_logic_data_feed_1,#instruction_logic_data_feed_2,
-#instruction_logic_data_feed_3, #instruction_logic_thingful_feed{
+#instruction_logic_data_feed_3, #instruction_logic_thingful_feed, #instruction_thingful_explorer_feed_3{
 	font-size:12px;
 	margin-bottom: 10px;
 }
@@ -486,4 +491,66 @@ button.experiment:active, button.health:active{
 #device_detail{
   font-size: 20px;
   color:white;
+}
+
+#filter_environment, #filter_transport, #filter_energy, #filter_home, #filter_miscellaneous, #filter_experiment, #filter_health{
+  font-size:15px; 
+  padding:5px; 
+  margin:1px; 
+  outline:none; 
+  border-style: none;
+}
+
+#filter_environment{
+  background-color:#0098D4;
+}
+
+#filter_transport{
+  background-color:#AD4FD9;
+}
+
+#filter_energy{
+  background-color:#FFDC36;
+}
+
+#filter_home{
+  background-color:#EE7C0E;
+}
+
+#filter_miscellaneous{
+  background-color:#A0A5A9;
+}
+
+#filter_experiment{
+  background-color:#EA6DEC;
+}
+
+#filter_health{
+  background-color:#E4271E;
+}
+
+#pre-search{
+  margin-top:10px;
+  margin-bottom: 5px; 
+  padding-left:15px; 
+  padding-right:20px; 
+  font-size:20px;
+}
+
+#slider_value{
+  font-size:20px; 
+  color:white;
+}
+
+#search_radius{
+  font-size:15px; 
+  color:white;
+}
+
+#search-rad{
+  width:180px;
+}
+
+#close_panel_button_thingful_explorer{
+  margin-bottom: 10px;
 }

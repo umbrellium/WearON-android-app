@@ -6,8 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no
         initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
-
-    <link rel="stylesheet" type="text/css" href="css/global.css">     
+    <link rel="stylesheet" type="text/css" href="css/global.css"> 
 <!--     <link rel="stylesheet" type="text/css" href="css/user.css">  
  -->
     <!--all the external js to keep app running properly-->
@@ -44,6 +43,7 @@
     <script src="js/get_global_connect_key.js"></script>
     <script src="js/thingful_explorer.js"></script>
     <script src="js/thingful_explorer_filter_category.js"></script>
+    <script src="js/thingful_explorer_set_logic.js"></script>
 
  </head>
 
@@ -207,6 +207,11 @@
     <div id="ThingfulFeed_content_status"></div>
     </div>
 
+    <div id="ThingfulExplorerFeed">
+    <span id="ThingfulExplorerFeed_content"> </span>
+    <div id="ThingfulExplorerFeed_content_status"></div>
+    </div>
+
     </div>
     <!-- END of End user's UI content -->
 
@@ -346,7 +351,7 @@
         <div id="DateFeed1Panel">
             <div id="DataFeed1title"><b> Data Feed 1</b></div>
             <button type="button" id="get_data_set_1" onclick="toggelgetDataFeed1()"> Retrieve</button> 
-            <button type="button" id="connect_data_set_1"onclick="toggelConnect_data_feed_1()" >Set Logic</button>
+            <button type="button" id="connect_data_set_1" onclick="toggelConnect_data_feed_1()" >Set Logic</button>
         </div>
 
         <div id="DateFeed2Panel">
@@ -498,12 +503,14 @@
         <button type="button" id="show_global_connectivity_panel" onclick="openAppGlobalConnectivity()">+</button> <!-- in global.js -->
         <hr/>
 
+        <!-- logic connection panel for thingful data retrieve panel-->
         <div id="app_global_connectivity_control_content">
         <div class="sub_instruction"> * User can connect up to 1 Thing from Thingful* </div>
 
         <div id="thingfulExplorer">
             <div id="thingful_explorer_title"><b> Thingful Explorer </b></div>
             <button type="button" id="explore_thingful" onclick="toggelexploreThingful()"> Explore </button> 
+            <button type="button" id="connect_explore_thingful" onclick="toggelConnect_explore_thingful()">Set Logic</button>
         </div>
 
         <div id="thingfulPanel">
@@ -548,38 +555,38 @@
         <br>
         <center><div id="get_thingful_explorer_title"><b>Connect to IoT Devices Near You</b></div>
         <br>
-        <span style="font-size:15px; color:white;">Search Radius(m):</span></b>
-        <input type="range" id="search-rad" value="200" min="100" max="500" style="width:180px;" onchange="slider_value.value=value">
-        <output style="font-size:20px; color:white;" id="slider_value">200</output><br>
-        <button type = "button" id ="pre-search" data-loading-text = "exploring..." style="margin-top:10px;margin-bottom: 5px; padding-left:15px; padding-right:20px; font-size:20px;" onclick="startQuery()"> EXPLORE </button></center>
+        <span id="search_radius">Search Radius(m):</span></b>
+        <input type="range" id="search-rad" value="200" min="100" max="500" onchange="slider_value.value=value">
+        <output id="slider_value">200</output><br>
+        <button type = "button" id ="pre-search" data-loading-text = "exploring..." onclick="startQuery()"> EXPLORE </button></center>
         <div id="all_devices"><center>*Make sure you have enabled geolocation tracking*</center></div>
         <center><div id="filter" hidden>
         <hr>
           Available Categories to Filter By: 
-          <button id="filter_environment" style="font-size:15px; padding:5px; margin:1px; background-color:#0098D4; outline:none; border-style: none;" onclick="toggleFilterEnvironment()" hidden >Environment</button>
+          <button id="filter_environment" onclick="toggleFilterEnvironment()" hidden >Environment</button>
 
-          <button id="filter_transport" style="font-size:15px; padding:5px;margin:1px; background-color:#AD4FD9; outline:none; border-style: none;" onclick="toggleFilterTransport()" hidden >Transport</button>
+          <button id="filter_transport" onclick="toggleFilterTransport()" hidden >Transport</button>
 
-          <button id="filter_energy" style="font-size:15px; padding:5px;margin:1px; background-color:#FFDC36; outline:none; border-style: none;" onclick="toggleFilterEnergy()" hidden >Energy</button>
+          <button id="filter_energy" onclick="toggleFilterEnergy()" hidden >Energy</button>
 
-          <button id="filter_home" style="font-size:15px; padding:5px;margin:1px; background-color:#EE7C0E; outline:none; border-style: none;" onclick="toggleFilterHome()" hidden >Home</button>
+          <button id="filter_home" onclick="toggleFilterHome()" hidden >Home</button>
 
-          <button id="filter_miscellaneous" style="font-size:15px; padding:5px;margin:1px; background-color:#A0A5A9; outline:none; border-style: none;" onclick="toggleFilterMiscellaneous()" hidden >Miscellaneous</button>
+          <button id="filter_miscellaneous" onclick="toggleFilterMiscellaneous()" hidden >Miscellaneous</button>
 
-          <button id="filter_experiment" style="font-size:15px; padding:5px;margin:1px; background-color:#EA6DEC; outline:none; border-style: none;" onclick="toggleFilterExperiment()" hidden >Experiment</button>
+          <button id="filter_experiment" onclick="toggleFilterExperiment()" hidden >Experiment</button>
 
-          <button id="filter_health" style="font-size:15px; padding:5px;margin:1px; background-color:#E4271E; outline:none; border-style: none;" onclick="toggleFilterHealth()" hidden >Health</button>
+          <button id="filter_health" onclick="toggleFilterHealth()" hidden >Health</button>
         </div></center>
 
         <div id="device_detail"></div>
 
         <center><div id="close_panel_thingful_explorer">
         <hr>
-        <button id="close_panel_button_thingful_explorer" style=" margin-bottom: 10px;" onclick="toggelexploreThingful()">Close Panel</button>
+        <button id="close_panel_button_thingful_explorer" onclick="toggelexploreThingful()">Close Panel</button>
         </div></center>
     </div>
 
-<!-- logic connection panel for data feed 1 -->
+<!-- logic connection panel for thing -->
     <center><div id="connect_thingful_data_panel">
         <div id="connect_thingful_data_title"><b>Construct logic for Thing's Feed</b></div>
         <div id="instruction_logic_thingful_feed">Press buttons to switch inputs and key in number</div>
@@ -596,6 +603,25 @@
         <div id="check_logic_status_thingful_data_feed_output"></div>
         <div id="check_overall_logic_thingful_status_data_feed"><b>-Logic: Unsuccessful-</b></div>
         <div id="close_panel_thingful_data_feed">(Click 'Close panel' when completed)</div>
+    </div></center>
+
+<!-- logic connection panel for thingful explorer -->
+    <center><div id="connect_thingful_explorer_panel">
+        <div id="connect_thingful_explorer_title"><b>Construct logic for Thingful Dataset</b></div>
+        <div id="instruction_thingful_explorer_feed_3">Press buttons to switch inputs and key in number</div>
+    
+        <div id="logic_statement_thingful_explorer">
+        <span><b> if Val</b></span>  
+        <button id="greater_than_thingful_explorer" onclick="checkLogic_thingful_explorer_greater_than()"> < </button>
+        <input type="number" id="numbering_thingful_explorer"maxlength="5" size="5" placeholder= "+000" max="1023" onchange="checkLogic_thingful_explorer_number()"></input>
+        <span><b>, turn </b></span> 
+        <button id="select_output_thingful_explorer" onclick="checkLogic_thingful_explorer_output()">D9</button>
+        <button id="on_off_thingful_explorer" onclick="checkLogic_thingful_explorer_on_off()">OFF</button>
+        </div>
+        <div id="check_logic_status_thingful_explorer_number"></div>
+        <div id="check_logic_status_thingful_explorer_output"></div>
+        <div id="check_overall_logic_status_thingful_explorer"><b>-Logic: Unsuccessful-</b></div>
+        <div id="close_panel_thingful_explorer">(Click 'Close panel' when completed)</div>
     </div></center>
 
 <!--END App's Cross connectivity Control Panel -->

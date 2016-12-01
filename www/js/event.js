@@ -1,7 +1,6 @@
 window.addEventListener("load", function load(event) {
   window.removeEventListener("load", load, false); //remove listener, no longer needed
   startApplication();
-  console.log("load event.js");
   //testing
   // check_thingful_api();
 }, false);
@@ -55,6 +54,7 @@ function startApplication() {
     $("#connect_data_feed_1_panel").hide();
     $("#connect_data_feed_2_panel").hide();
     $("#connect_data_feed_3_panel").hide();
+    $("#connect_thingful_explorer_panel").hide();
     $("#connect_thingful_data_panel").hide();
     $("#get_data_set_1_panel").hide();
     $("#get_data_set_2_panel").hide();
@@ -115,6 +115,7 @@ function openMainPage() {
   $("#connect_data_feed_1_panel").hide();
   $("#connect_data_feed_2_panel").hide();
   $("#connect_data_feed_3_panel").hide();
+  $("#connect_thingful_explorer_panel").hide();
   $("#connect_thingful_data_panel").hide();
   $("#get_data_set_1_panel").hide();
   $("#get_data_set_2_panel").hide();
@@ -126,6 +127,7 @@ function openMainPage() {
   $('#connect_data_set_2').hide();
   $('#connect_data_set_3').hide();
   $('#connect_thingful').hide();
+  $("#connect_explore_thingful").hide();
 }
 
 //start app when user press begin button

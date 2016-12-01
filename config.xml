@@ -16,6 +16,8 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     <platform name="android">
         <icon src="www/img/WearON_icon_96dpi.png" width="96" height="96" density="xhdpi" />
         <icon src="www/img/WearON_icon_192dpi.png" width="192" height="192" density="xxxhdpi" />

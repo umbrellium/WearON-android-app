@@ -2,20 +2,31 @@ var device_name = [];
 var device_id = [];
 var device_category = [];
 var device_channels = [];
-var officeLoc = [51.5234529, -0.0862888];
 var catergoryColour;
+var get_thingful_dataset = false;
 var LING_API_KEY = "APIKey-Znd5MnpoYWE2d2Rj-ZjRrandwcHNxZno2ZnpkNHBlZGNiOWhq";
 
 
 function toggelexploreThingful() {
   if (open_thingful_explorer) {
     open_thingful_explorer = false;
-    $('#explore_thingful').css("background-color", "white");
-    $('#explore_thingful').css("color", "black");
-    $('#explore_thingful').html("Explore");
+    if (get_thingful_dataset === false) {
+      $('#explore_thingful').css("background-color", "white");
+      $('#explore_thingful').css("color", "black");
+      $('#explore_thingful').html("Explore");
+      $("#connect_explore_thingful").hide();
+    } else if (get_thingful_dataset === true) { //if retrieval of data set from thingful is successful
+      $('#explore_thingful').css("background-color", "black");
+      $('#explore_thingful').css("color", "white");
+      $("#explore_thingful").html("Reset");
+      $('#explore_thingful').css("padding-left", "28px");
+      $('#explore_thingful').css("padding-right", "28px");
+      $("#connect_explore_thingful").show();
+    }
     $("#get_thingful_explorer_panel").hide();
     $("#disconnectDevice").show();
     $("#visual_panel").show();
+    $("#AppContent").show();
   } else {
     open_thingful_explorer = true;
     $('#explore_thingful').css("background-color", "black");
@@ -24,6 +35,7 @@ function toggelexploreThingful() {
     $("#get_thingful_explorer_panel").show();
     $("#disconnectDevice").hide();
     $("#visual_panel").hide();
+    $("#AppContent").hide();
   }
 }
 
@@ -32,7 +44,7 @@ function startQuery() {
   $("#pre-search").html('EXPLORING...');
   setTimeout(function() {
     $("#pre-search").html('EXPLORE');
-  }, 3000);
+  }, 5000);
   console.clear();
   $("#all_devices").empty();
   resetVariable();
@@ -83,7 +95,7 @@ function search(_apikey, _options, _rawAddress) {
   });
 }
 
-//check whether device has valid data 
+//check whether each device has valid data 
 function validateDevice(id) {
   $('#device_detail').empty();
   var url_access = "https://api.thingful.net/access?uid=" + id;
@@ -150,9 +162,55 @@ function accessDevice(deviceID) {
       for (var i = 0; i < all_channels.length; i++) {
         var htmlStringFilter =
           '<button class=deviceDataset style="font-size:20px; margin:2px; outline:none; border-style: none; "onclick="accessDataset(\'' +
-          deviceID + '\')">' + all_channels[i].id + ": " + all_channels[i].value +
+          deviceID + "," + all_channels[i].id + "," + all_channels[i].value + '\')">' + all_channels[i].id + ": " + all_channels[i].value +
           '</button><br>';
         $('#device_detail').append(htmlStringFilter);
+      }
+    },
+  });
+}
+
+//when user click on a specific dataset that he/she wants to input into WearON
+function accessDataset(deviceID) {
+  var datasetInfo = deviceID.split(",");
+  var dataset_name = datasetInfo[1];
+  var dataset_value = datasetInfo[2];
+  //input initial dataset and value
+  $("#ThingfulExplorerFeed_content").html("<b>" + dataset_name + "= " + dataset_value + "</b>");
+  //log in get thingful dataset is successful
+  get_thingful_dataset = true;
+  //close thingful explorer panel
+  toggelexploreThingful();
+  //reset thingful explorer
+  resetVariable();
+  resetFilter();
+  $("#all_devices").empty();
+  $("#filter").hide();
+  $("#device_detail").empty();
+  //access dataset periodically 
+  setInterval(function() {
+    accessDatasetPeriodically(datasetInfo[0], datasetInfo[1]);
+  }, 60000); //access every 1 min
+}
+
+//access dataset periodically (currently every 1 min)
+function accessDatasetPeriodically(deviceID, channelName) {
+  console.log("checking dataset value from thingful");
+  var url_access = "https://api.thingful.net/access?uid=" + deviceID;
+  $.ajax({
+    url: url_access,
+    headers: {
+      "Authorization": "Bearer APIKey-Znd5MnpoYWE2d2Rj-ZjRrandwcHNxZno2ZnpkNHBlZGNiOWhq"
+    },
+    type: "GET",
+    crossDomain: true,
+    success: function(response) {
+      var data = response.data;
+      var all_channels = data[0].attributes.channels;
+      for (var i = 0; i < all_channels.length; i++) {
+        if (all_channels[i].id === channelName) {
+          $("#ThingfulExplorerFeed_content").html("<b>" + channelName + "= " + all_channels[i].value + "</b>");
+        }
       }
     },
   });

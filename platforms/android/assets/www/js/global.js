@@ -151,6 +151,7 @@ var thingful_reading;
 
 //thingful explorer
 var open_thingful_explorer = false; // toggle check for opening get thingful explorer panel
+var show_thingful_explorer_logic_panel =false; // toggle check for opening data feed retrieve panel
 
 
 //track thingspeak connection

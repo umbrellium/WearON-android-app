@@ -57,6 +57,10 @@ function startQuery() {
 }
 
 function search(_apikey, _options, _rawAddress) {
+  //empty out arrays
+  device_name = [];
+  device_category = [];
+
   var query = "https://api.thingful.net/search?" + _options;
   if (_rawAddress) {
     query = _rawAddress;
@@ -89,8 +93,8 @@ function search(_apikey, _options, _rawAddress) {
     },
     error: function(xhr, error) {
       // $(".btn").button('reset');
-      console.debug(xhr);
-      console.debug(error);
+      // console.debug(xhr);
+      // console.debug(error);
       $('#all_devices').html("<center>*Make sure you have enabled geolocation tracking*</center>");
       // alert("something went wrong: " + error);
     },
@@ -142,6 +146,9 @@ function validateDevice(id) {
       $('#all_devices').append($(htmlString));
       $('#filter').show();
     },
+    error: function(xhr, error) {
+      //do something
+    },
   });
 }
 
@@ -190,6 +197,10 @@ function accessDataset(deviceID) {
   $("#all_devices").empty();
   $("#filter").hide();
   $("#device_detail").empty();
+  //stop other previous interval if any
+  clearInterval(accessThingfulDatasetPeriodically);
+  //access it first time
+  accessDatasetPeriodically(datasetInfo[0], datasetInfo[1]);
   //access dataset periodically 
   accessThingfulDatasetPeriodically = setInterval(function() {
     accessDatasetPeriodically(datasetInfo[0], datasetInfo[1]);
@@ -198,7 +209,7 @@ function accessDataset(deviceID) {
 
 //access dataset periodically (currently every 1 min)
 function accessDatasetPeriodically(deviceID, channelName) {
-  console.log("checking dataset value from thingful");
+
   var url_access = "https://api.thingful.net/access?uid=" + deviceID;
   $.ajax({
     url: url_access,
@@ -213,10 +224,13 @@ function accessDatasetPeriodically(deviceID, channelName) {
       for (var i = 0; i < all_channels.length; i++) {
         if (all_channels[i].id === channelName) {
           $("#ThingfulExplorerFeed_content").html("<b>" + channelName + "= " + all_channels[i].value + "</b>");
+          thingful_explorer_reading = parseInt(all_channels[i].value);
+          initiateLogic_thingful_explorer(); // initiate logic for thingful explorer if there is one
         }
       }
     },
   });
+
 }
 
 //reset variables when user click "EXPLORE"

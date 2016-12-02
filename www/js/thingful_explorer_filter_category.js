@@ -1,4 +1,3 @@
-console.log("here");
 var filter_environment = false;
 var filter_transport = false;
 var filter_energy = false;

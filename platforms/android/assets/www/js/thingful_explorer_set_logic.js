@@ -40,6 +40,8 @@ function toggelConnect_explore_thingful() {
 
 function checkLogic_thingful_explorer_greater_than() {
 
+  initiateLogic_thingful_explorer();
+
   if (greater_than_ThingfulExplorer == "1") {
 
     greater_than_ThingfulExplorer = 2;
@@ -56,6 +58,8 @@ function checkLogic_thingful_explorer_greater_than() {
 
 function checkLogic_thingful_explorer_output() {
 
+  initiateLogic_thingful_explorer();
+
   if (D10_on_ThingfulExplorer) {
     D10_on_ThingfulExplorer = false; // D9 selected
     $('#select_output_thingful_explorer').html('D9');
@@ -69,6 +73,8 @@ function checkLogic_thingful_explorer_output() {
 }
 
 function checkLogic_thingful_explorer_on_off() {
+
+  initiateLogic_thingful_explorer();
 
   if (on_ThingfulExplorer) {
     on_ThingfulExplorer = false;
@@ -125,6 +131,8 @@ function checkLogic_thingful_explorer_number() {
     }
 
   } else { // if there is number input
+
+    initiateLogic_thingful_explorer();
 
     check_number_ThingfulExplorer = true; //number check turns out correct
     $('#check_logic_status_thingful_explorer_number').hide();
@@ -237,6 +245,126 @@ function checkLogic_thingful_explorer_number() {
         $('#connect_explore_thingful').css("color", "black");
         $('#connect_explore_thingful').text('Set Logic');
       }
+    }
+  }
+
+}
+
+
+function initiateLogic_thingful_explorer() {
+
+  numThingfulExplorer = parseInt(numThingfulExplorer); // parse the var into strictly number value
+
+  if (logic_constructed_thingful_explorer == true) {
+
+    if (D10_on_ThingfulExplorer == false) { // if D9 selected
+
+      if (on_ThingfulExplorer == true) { // if selected: ON
+
+        if (greater_than_ThingfulExplorer == "1") { // selected: <
+
+          if (thingful_explorer_reading < numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x01]); // turn D9 on
+          } else {
+            app.sendData([0x01, 0x00, 0x02]); // turn D9 off
+          }
+        } else if (greater_than_ThingfulExplorer == "2") { // selected: >
+
+          if (thingful_explorer_reading > numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x01]); // turn D9 on
+          } else {
+            app.sendData([0x01, 0x00, 0x02]); // turn D9 off
+          }
+        } else if (greater_than_ThingfulExplorer == "3") { // selected: =
+
+          if (thingful_explorer_reading == numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x01]); // turn D9 on
+          } else {
+            app.sendData([0x01, 0x00, 0x02]); // turn D9 off
+          }
+        }
+
+      } else { // if selected: OFF
+
+        if (greater_than_ThingfulExplorer == "1") { // selected: <
+
+          if (thingful_explorer_reading < numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x02]); // turn D9 off
+          } else {
+            app.sendData([0x01, 0x00, 0x01]); // turn D9 on
+          }
+        } else if (greater_than_ThingfulExplorer == "2") { // selected: >
+
+          if (thingful_explorer_reading > numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x02]); // turn D9 off
+          } else {
+            app.sendData([0x01, 0x00, 0x01]); // turn D9 on
+          }
+        } else if (greater_than_ThingfulExplorer == "3") { // selected: =
+
+          if (thingful_explorer_reading == numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x02]); // turn D9 off
+          } else {
+            app.sendData([0x01, 0x00, 0x01]); // turn D9 on
+          }
+        }
+
+      }
+
+    } else { // if D10 selected
+
+      if (on_ThingfulExplorer == true) { // if selected: ON
+
+        if (greater_than_ThingfulExplorer == "1") { // selected: <
+
+          if (thingful_explorer_reading < numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x03]); // turn D10 on
+          } else {
+            app.sendData([0x01, 0x00, 0x04]); // turn D10 off
+          }
+        } else if (greater_than_ThingfulExplorer == "2") { // selected: >
+
+          if (thingful_explorer_reading > numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x03]); // turn D10 on
+          } else {
+            app.sendData([0x01, 0x00, 0x04]); // turn D10 off
+          }
+        } else if (greater_than_ThingfulExplorer == "3") { // selected: =
+
+          if (thingful_explorer_reading == numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x03]); // turn D10 on
+          } else {
+            app.sendData([0x01, 0x00, 0x04]); // turn D10 off
+          }
+        }
+
+      } else { // if selected: OFF
+
+        if (greater_than_ThingfulExplorer == "1") { // selected: <
+
+          if (thingful_explorer_reading < numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x04]); // turn D10 off
+          } else {
+            app.sendData([0x01, 0x00, 0x03]); // turn D10 on
+          }
+        } else if (greater_than_ThingfulExplorer == "2") { // selected: >
+
+          if (thingful_explorer_reading > numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x04]); // turn D10 off
+          } else {
+            app.sendData([0x01, 0x00, 0x03]); // turn D10 on
+          }
+        } else if (greater_than_ThingfulExplorer == "3") { // selected: =
+
+          if (thingful_explorer_reading == numThingfulExplorer) {
+            app.sendData([0x01, 0x00, 0x04]); // turn D10 off
+          } else {
+            app.sendData([0x01, 0x00, 0x03]); // turn D10 on
+          }
+        }
+
+      }
+
     }
   }
 

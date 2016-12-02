@@ -392,6 +392,7 @@ app.disconnect = function(errorMessage) {
 		$('#scanResultView').hide();
 		$('#scanResultView').empty();
 		$('#disconnectDevice').hide();
+		$("#get_thingful_explorer_panel").hide();
 
 		$("#anotherToken").show()
 		$("#scanForDevice").show();

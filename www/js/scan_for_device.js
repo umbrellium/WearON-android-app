@@ -392,6 +392,7 @@ app.disconnect = function(errorMessage) {
 		$('#scanResultView').hide();
 		$('#scanResultView').empty();
 		$('#disconnectDevice').hide();
+		$("#get_thingful_explorer_panel").hide();
 
 		$("#anotherToken").show()
 		$("#scanForDevice").show();
@@ -408,6 +409,7 @@ app.disconnect = function(errorMessage) {
 		$('#valueA5').empty();
 		$('#valueA4').empty();
 		$('#geolocationValue').empty();
+		$('#ThingfulExplorerFeed_content').empty();
 
 		if (analog_enabled_A5 == true) {
 			app.toggelAnalogA5();
@@ -613,6 +615,18 @@ app.disconnect = function(errorMessage) {
 			toggelConnect_thingful();
 		}
 
+		if (open_thingful_explorer == true) {
+			toggelexploreThingful();
+		}
+
+		if (get_thingful_dataset == true) {
+			get_thingful_dataset = false;
+			$('#explore_thingful').css("background-color", "white");
+			$('#explore_thingful').css("color", "black");
+			$('#explore_thingful').html("Explore");
+		}
+
+		clearInterval(accessThingfulDatasetPeriodically);
 		clearInterval(getDataFeed_Thingful);
 
 		//END global connectivity panel //////

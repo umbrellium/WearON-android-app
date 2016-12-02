@@ -149,6 +149,13 @@ var Thing_ID;
 var Thing_data_set;
 var thingful_reading;
 
+//thingful explorer
+var open_thingful_explorer = false; // toggle check for opening get thingful explorer panel
+var show_thingful_explorer_logic_panel =false; // toggle check for opening data feed retrieve panel
+var logic_constructed_thingful_explorer = false; // check whether logic is constructed successfully for thingful_explorer
+var show_panel_thingful_explorer = false; // toggle check for opening logic connection panel for thingful_explorer
+var thingful_explorer_reading;
+
 
 //track thingspeak connection
 function showConnectedThingspeakData() {
@@ -934,6 +941,7 @@ function openAppGlobalConnectivity() {
     $('#show_global_connectivity_panel').css("color", "black");
     $("#app_global_connectivity_control_content").hide();
     $("#get_thingful_data_panel").hide();
+    $("#get_thingful_explorer_panel").hide();
     $("#connect_thingful_data_panel").hide();
 
   } else {

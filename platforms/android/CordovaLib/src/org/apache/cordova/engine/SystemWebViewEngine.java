@@ -129,7 +129,7 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
     @SuppressWarnings("deprecation")
     private void initWebViewSettings() {
         webView.setInitialScale(0);
-        webView.setVerticalScrollBarEnabled(false);
+        webView.setVerticalScrollBarEnabled(true);
         // Enable JavaScript
         final WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -310,3 +310,5 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
         }
     }
 }
+
+

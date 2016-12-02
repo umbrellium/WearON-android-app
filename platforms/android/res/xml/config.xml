@@ -62,6 +62,8 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     <icon density="xhdpi" height="96" src="www/img/WearON_icon_96dpi.png" width="96" />
     <icon density="xxxhdpi" height="192" src="www/img/WearON_icon_192dpi.png" width="192" />
     <allow-intent href="market:*" />

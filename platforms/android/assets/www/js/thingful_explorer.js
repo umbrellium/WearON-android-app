@@ -210,6 +210,8 @@ function accessDataset(deviceID) {
 //access dataset periodically (currently every 1 min)
 function accessDatasetPeriodically(deviceID, channelName) {
 
+  initiateLogic_thingful_explorer();
+  
   var url_access = "https://api.thingful.net/access?uid=" + deviceID;
   $.ajax({
     url: url_access,

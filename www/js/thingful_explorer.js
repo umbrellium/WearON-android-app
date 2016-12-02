@@ -226,8 +226,12 @@ function accessDatasetPeriodically(deviceID, channelName) {
           $("#ThingfulExplorerFeed_content").html("<b>" + channelName + "= " + all_channels[i].value + "</b>");
           thingful_explorer_reading = parseInt(all_channels[i].value);
           initiateLogic_thingful_explorer(); // initiate logic for thingful explorer if there is one
+          $("#ThingfulExplorerFeed_content_status").html("Data obtained successfully");
         }
       }
+    },
+    error: function(xhr, error) {
+      $("#ThingfulExplorerFeed_content_status").html("Error in obtaining data");
     },
   });
 
